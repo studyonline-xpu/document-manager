@@ -5,6 +5,7 @@ import com.document.pojo.User;
 import com.document.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,15 +19,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class UserController {
     @Autowired
     UserService userService;//注入
-    @ResponseBody
+
     @RequestMapping(value = "login", method = RequestMethod.POST)
-    public SystemResult login(String userId, String password){
+    public String login(String userId, String password, Model model){
         User user = userService.login(userId, password);
         SystemResult result;
         if(user != null)
-            result = SystemResult.ok(user);
-        else
-            result = SystemResult.build(400,"用户名或密码错误");
-        return result;
+            return "index/dashboard";
+        else{
+            model.addAttribute("msg", "账号或密码错误!");
+            return "login";
+        }
     }
 }

@@ -17,13 +17,15 @@ public class pageController {
     public String login() {
         return "login";
     }
-    //
+    //登录2
     @RequestMapping("/index")
     public String login1() {
         return "login";
     }
+    //登录3
     @RequestMapping("/login")
     public String login2() {
         return "login";
     }
+
 }
