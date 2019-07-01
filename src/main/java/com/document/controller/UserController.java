@@ -22,7 +22,11 @@ public class UserController {
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public SystemResult login(String userId, String password){
         User user = userService.login(userId, password);
-        SystemResult result = SystemResult.ok(user);
+        SystemResult result;
+        if(user != null)
+            result = SystemResult.ok(user);
+        else
+            result = SystemResult.build(400,"用户名或密码错误");
         return result;
     }
 }
