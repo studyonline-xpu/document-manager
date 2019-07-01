@@ -12,14 +12,12 @@ import java.io.IOException;
  * 测试使用的controller，查询当前时间
  */
 @Controller
-@RequestMapping("/test")
 public class TestController {
     @Autowired
     private TestService testService;//注入服务
-    @RequestMapping("/queryNow")
-    @ResponseBody
-    public String queryNow(HttpServletResponse response) throws IOException {
+    @RequestMapping("/login")
+    public String queryNow() throws IOException {
         //调用服务的方法
-        return testService.queryNow();
+        return "login";
     }
 }
