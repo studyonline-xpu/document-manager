@@ -1,5 +1,6 @@
 package com.document.controller;
 
+import com.document.pojo.SystemResult;
 import com.document.pojo.User;
 import com.document.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,9 @@ public class UserController {
     UserService userService;//注入
     @ResponseBody
     @RequestMapping(value = "login", method = RequestMethod.POST)
-    public User login(String userId, String password){
-        return userService.login(userId, password);
+    public SystemResult login(String userId, String password){
+        User user = userService.login(userId, password);
+        SystemResult result = SystemResult.ok(user);
+        return result;
     }
 }
