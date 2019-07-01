@@ -6,6 +6,8 @@ import java.util.Date;
 public class Document implements Serializable {
     private String documentId;
 
+    private String documentName;
+
     private String userId;
 
     private String classId;
@@ -24,6 +26,14 @@ public class Document implements Serializable {
 
     public void setDocumentId(String documentId) {
         this.documentId = documentId == null ? null : documentId.trim();
+    }
+
+    public String getDocumentName() {
+        return documentName;
+    }
+
+    public void setDocumentName(String documentName) {
+        this.documentName = documentName == null ? null : documentName.trim();
     }
 
     public String getUserId() {

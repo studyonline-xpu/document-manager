@@ -175,6 +175,76 @@ public class DocumentExample {
             return (Criteria) this;
         }
 
+        public Criteria andDocumentNameIsNull() {
+            addCriterion("document_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDocumentNameIsNotNull() {
+            addCriterion("document_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDocumentNameEqualTo(String value) {
+            addCriterion("document_name =", value, "documentName");
+            return (Criteria) this;
+        }
+
+        public Criteria andDocumentNameNotEqualTo(String value) {
+            addCriterion("document_name <>", value, "documentName");
+            return (Criteria) this;
+        }
+
+        public Criteria andDocumentNameGreaterThan(String value) {
+            addCriterion("document_name >", value, "documentName");
+            return (Criteria) this;
+        }
+
+        public Criteria andDocumentNameGreaterThanOrEqualTo(String value) {
+            addCriterion("document_name >=", value, "documentName");
+            return (Criteria) this;
+        }
+
+        public Criteria andDocumentNameLessThan(String value) {
+            addCriterion("document_name <", value, "documentName");
+            return (Criteria) this;
+        }
+
+        public Criteria andDocumentNameLessThanOrEqualTo(String value) {
+            addCriterion("document_name <=", value, "documentName");
+            return (Criteria) this;
+        }
+
+        public Criteria andDocumentNameLike(String value) {
+            addCriterion("document_name like", value, "documentName");
+            return (Criteria) this;
+        }
+
+        public Criteria andDocumentNameNotLike(String value) {
+            addCriterion("document_name not like", value, "documentName");
+            return (Criteria) this;
+        }
+
+        public Criteria andDocumentNameIn(List<String> values) {
+            addCriterion("document_name in", values, "documentName");
+            return (Criteria) this;
+        }
+
+        public Criteria andDocumentNameNotIn(List<String> values) {
+            addCriterion("document_name not in", values, "documentName");
+            return (Criteria) this;
+        }
+
+        public Criteria andDocumentNameBetween(String value1, String value2) {
+            addCriterion("document_name between", value1, value2, "documentName");
+            return (Criteria) this;
+        }
+
+        public Criteria andDocumentNameNotBetween(String value1, String value2) {
+            addCriterion("document_name not between", value1, value2, "documentName");
+            return (Criteria) this;
+        }
+
         public Criteria andUserIdIsNull() {
             addCriterion("user_id is null");
             return (Criteria) this;
