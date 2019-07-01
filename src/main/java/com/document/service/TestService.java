@@ -1,4 +1,5 @@
 package com.document.service;
 
-public class TestService {
+public interface TestService {
+    public String queryNow();
 }
