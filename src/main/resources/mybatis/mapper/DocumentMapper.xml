@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.document.mapper.DocumentMapper">
+  <resultMap id="BaseResultMap" type="com.document.pojo.Document">
+    <id column="document_id" jdbcType="VARCHAR" property="documentId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="class_id" jdbcType="VARCHAR" property="classId" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.document.pojo.Document">
+    <result column="doucument" jdbcType="LONGVARCHAR" property="doucument" />
+    <result column="document_url" jdbcType="LONGVARCHAR" property="documentUrl" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    document_id, user_id, class_id, update_time
+  </sql>
+  <sql id="Blob_Column_List">
+    doucument, document_url
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.document.pojo.DocumentExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from document
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.document.pojo.DocumentExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from document
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from document
+    where document_id = #{documentId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from document
+    where document_id = #{documentId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.document.pojo.DocumentExample">
+    delete from document
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.document.pojo.Document">
+    insert into document (document_id, user_id, class_id, 
+      update_time, doucument, document_url
+      )
+    values (#{documentId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{classId,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{doucument,jdbcType=LONGVARCHAR}, #{documentUrl,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.document.pojo.Document">
+    insert into document
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="documentId != null">
+        document_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="classId != null">
+        class_id,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="doucument != null">
+        doucument,
+      </if>
+      <if test="documentUrl != null">
+        document_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="documentId != null">
+        #{documentId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="classId != null">
+        #{classId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="doucument != null">
+        #{doucument,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="documentUrl != null">
+        #{documentUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.document.pojo.DocumentExample" resultType="java.lang.Long">
+    select count(*) from document
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update document
+    <set>
+      <if test="record.documentId != null">
+        document_id = #{record.documentId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.classId != null">
+        class_id = #{record.classId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.doucument != null">
+        doucument = #{record.doucument,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.documentUrl != null">
+        document_url = #{record.documentUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update document
+    set document_id = #{record.documentId,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=VARCHAR},
+      class_id = #{record.classId,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      doucument = #{record.doucument,jdbcType=LONGVARCHAR},
+      document_url = #{record.documentUrl,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update document
+    set document_id = #{record.documentId,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=VARCHAR},
+      class_id = #{record.classId,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.document.pojo.Document">
+    update document
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="classId != null">
+        class_id = #{classId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="doucument != null">
+        doucument = #{doucument,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="documentUrl != null">
+        document_url = #{documentUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where document_id = #{documentId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.document.pojo.Document">
+    update document
+    set user_id = #{userId,jdbcType=VARCHAR},
+      class_id = #{classId,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      doucument = #{doucument,jdbcType=LONGVARCHAR},
+      document_url = #{documentUrl,jdbcType=LONGVARCHAR}
+    where document_id = #{documentId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.document.pojo.Document">
+    update document
+    set user_id = #{userId,jdbcType=VARCHAR},
+      class_id = #{classId,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where document_id = #{documentId,jdbcType=VARCHAR}
+  </update>
+</mapper>
