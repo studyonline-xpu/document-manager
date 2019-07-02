@@ -23,6 +23,9 @@ public interface DocumentMapper {
 
     Document selectByPrimaryKey(String documentId);
 
+    //自己添加的方法
+    List<Document> selectByLikeDocumentName(String documentName);
+
     int updateByExampleSelective(@Param("record") Document record, @Param("example") DocumentExample example);
 
     int updateByExampleWithBLOBs(@Param("record") Document record, @Param("example") DocumentExample example);
