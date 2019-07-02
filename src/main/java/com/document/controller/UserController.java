@@ -39,4 +39,18 @@ public class UserController {
             return "login";
         }
     }
+
+    /**
+     * 注册方法：post方法请求
+     * @param user 用户实体
+     * @return
+     */
+    @RequestMapping(value = "register",method = RequestMethod.POST)
+    public String register(User user) {
+        boolean register = userService.register(user);
+        if (register) {
+            return "redirect:/index";
+        }
+        return "redirect:/register";
+    }
 }

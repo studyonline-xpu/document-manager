@@ -2,10 +2,19 @@ package com.document.service;
 
 import com.document.pojo.Document;
 
+import java.util.List;
+
 /**
  * 文档服务
  */
 public interface DocumentService {
+
+    /**
+     * 根据文档类别的Id查询文档所有信息
+     * @param classId 文档类别的id
+     * @return
+     */
+    public List<Document> queryByClassId(String classId);
 
     /**
      * 添加文档
@@ -21,9 +30,7 @@ public interface DocumentService {
      */
     public boolean updateDocument(Document document);
 
-    /*public boolean deleteDocumentById(Integer id);
-
-    public boolean queryByClassId(Integer classId);
+    /*public boolean deleteDocumentById(String id);
 
     public List<Document> queryByDocumentName(String documentName);
 
