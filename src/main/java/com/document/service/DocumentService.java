@@ -21,7 +21,7 @@ public interface DocumentService {
      * @param documentName 文档的名称
      * @return
      */
-    public List<Document> queryByDocumentName(String documentName);
+    public List<Document> queryByLikeDocumentName(String documentName);
 
     /**
      * 添加文档

@@ -45,8 +45,8 @@ public class DocumentController {
      * @return
      */
     @RequestMapping(value = "/queryByDocumentName")
-    public String queryByDocumentName(String documentName, Map map) {
-        List<Document> documents = documentService.queryByDocumentName(documentName);
+    public String queryByLikeDocumentName(String documentName, Map map) {
+        List<Document> documents = documentService.queryByLikeDocumentName(documentName);
         SystemResult systemResult;
         if (documents != null) {
             systemResult = SystemResult.build(200, "根据文档名称查询成功");
@@ -56,7 +56,7 @@ public class DocumentController {
         } else {
             systemResult = SystemResult.build(400, "根据文档名称查询失败");
         }
-        return "redirect:/index/table-basic";
+        return "index/table-basic";
     }
 
     /**
