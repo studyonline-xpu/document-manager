@@ -37,10 +37,8 @@ public interface DocumentService {
      */
     public boolean updateDocument(Document document);
 
-//    public boolean deleteDocumentById(String id);
 
     public List<Document> selectDocumentByDocument(String document);
 
-//    public List<Document> queryByLike(String like);
 
 }
