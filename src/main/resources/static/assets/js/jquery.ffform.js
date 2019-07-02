@@ -1,5 +1,4 @@
 ﻿/***************************************************************************************************************/
-
 /* Plugin: jQuery Contact Form FFForm
 /* Author: Muhammad Shahbaz Saleem
 /* URL: http://www.egrappler.com/ffform-free-jquery-contact-form-plugin-with-validations-amazing-css3-animation
@@ -22,7 +21,7 @@
         }
 
         /**********************************************/
-        var settings = $.extend({ 'fields': [], onSuccess: null, onFail: null, onValidate: null, submitButton: '', sendingText: 'Sending Messgage...', animation: 'flip', validationIndicator: '', successIndicator: '', errorIndicator: '' }, options); return this.each(function () {
+        var settings = $.extend({ 'fields': [], onSuccess: null, onFail: null, onValidate: null, submitButton: '', sendingText: 'Sending Message...', animation: 'flip', validationIndicator: '', successIndicator: '', errorIndicator: '' }, options); return this.each(function () {
             var form = $(this);
             var isValid = true;
             var validationResult;
@@ -119,70 +118,29 @@
                     }
                     else {
                         //add animate classe
-                        var w = parseFloat($(this).outerWidth());
-                        $(this).addClass('animate');
-                        $(this).data('text', $(this).val());
-                        $(this).val(settings.sendingText);
-                        sendEmail();
+                        // var w = parseFloat($(this).outerWidth());
+                        // $(this).addClass('animate');
+                        // $(this).data('text', $(this).val());
+                        // $(this).val(settings.sendingText);
+                        // var d = {};
+                        // var t = $('form').serializeArray();
+                        // $.each(t, function () {
+                        //     d[this.name] = this.value;
+                        // });
+                        // $.ajax({
+                        //     url: "http://localhost:8080/user/register",
+                        //     type: "post",
+                        //     dataType: "json",
+                        //     data: d,
+                        //     success: function (res) {
+                        //         console.log(res);
+                        //         $(location).attr('href','http://localhost:8080/');
+                        //     }
+                        // })
+                        $("#form").submit();
+                        return true;
                     }
-                    return false;
                 });
-            }
-            function sendEmail() {
-                var data = form.serialize();
-                $.ajax({
-                    type: 'POST',
-                    url: 'email.php',
-                    data: data,
-                    success: function (result) {
-                        if (settings.onSuccess != null)
-                            settings.onSuccess(result);
-                        if (settings.animation == 'flip') {
-                            $('.flip-container').addClass('flip');
-                            $('#msg-close').click(function () {
-                                $('.flip-container').removeClass('flip');
-                            });
-                        }
-                        else if (settings.animation == 'fade') {
-                            $('.form-front').css({ zIndex: 0 }).fadeOut('slow');
-                            $('.form-back').css({ zIndex: 1 }).fadeIn('slow');
-                            $('#msg-close').click(function () {
-                                $('.form-front').css({ zIndex: 1 }).fadeIn('slow');
-                                $('.form-back').css({ zIndex: 0 }).fadeOut('slow');
-                            });
-                        }
-                        if (successIndicator != null)
-                            successIndicator.css({ display: 'block' });
-                        else
-                            alert('Your message has been sent successfully');
-
-                        $(settings.submitButton).removeClass('animate').val($(settings.submitButton).data('text'));
-
-                    }, error: function (xhr, status, error) {
-                        if (settings.onError != null)
-                            settings.onError(error);
-                        if (settings.animation == 'flip') {
-                            $('.flip-container').addClass('flip');
-                            $('#msg-close').click(function () {
-                                $('.flip-container').removeClass('flip');
-                            });
-                        }
-                        else if (settings.animation == 'fade') {
-                            $('.form-front').css({ zIndex: 0 }).fadeOut('slow');
-                            $('.form-back').css({ zIndex: 1 }).fadeIn('slow');
-                            $('#msg-close').click(function () {
-                                $('.form-front').css({ zIndex: 1 }).fadeIn('slow');
-                                $('.form-back').css({ zIndex: 0 }).fadeOut('slow');
-                            });
-                        }
-                        if (errorIndicator != null)
-                            errorIndicator.css({ display: 'block' });
-                        else {
-                            alert('Unable to send your message at the moment. Please try again later!');
-                        }
-                        $(settings.submitButton).removeClass('animate').val($(settings.submitButton).data('text'));
-                    }
-                }); return false;
             }
             function validate() {
                 $(settings.fields).each(function () {
