@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author LM_Code
@@ -24,9 +25,9 @@ public class ClassController {
      * 获取所有类别
      * @return
      */
-    @ResponseBody
+//    @ResponseBody
     @RequestMapping("/queryAllClass")
-    public SystemResult queryAllClass(){
+    public String queryAllClass(Map<String,Object> map){
         List<Class> classList = classService.queryAllClass();
         SystemResult systemResult;
         if(classList != null){
@@ -35,6 +36,7 @@ public class ClassController {
         }else {
             systemResult = SystemResult.build(400, "类别获取失败");
         }
-        return systemResult;
+        map.put("classResult",classList);
+        return "index/index";
     }
 }
