@@ -33,16 +33,14 @@ public class DocumentServiceImpl implements DocumentService {
     }
 
     /**
-     * 根据文档名称查询文档所有信息
-     * @param documentName 文档的名称
+     * 根据文档名称查询文档信息
+     * @param documentName 文档实体
      * @return
      */
     @Override
-    public List<Document> queryByDocumentName(String documentName) {
-        DocumentExample example = new DocumentExample();
-        DocumentExample.Criteria criteria = example.createCriteria();
-        criteria.andDocumentNameEqualTo(documentName);
-        List<Document> documentList = documentMapper.selectByExample(example);
+    public List<Document> queryByLikeDocumentName(String documentName) {
+        documentName = "%"+documentName+"%";
+        List<Document> documentList = documentMapper.selectByLikeDocumentName(documentName);
         return documentList;
     }
 
