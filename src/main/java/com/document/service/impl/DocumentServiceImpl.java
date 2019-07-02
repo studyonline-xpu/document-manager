@@ -63,4 +63,16 @@ public class DocumentServiceImpl implements DocumentService {
     public boolean updateDocument(Document document) {
         return false;
     }
+
+    /**
+     * 根据文档内容查询文档集合
+     * @param document 文档内容片段
+     * @return
+     */
+    @Override
+    public List<Document> selectDocumentByDocument(String document) {
+        document = "%" + document + "%";
+        List<Document> documents = documentMapper.selectDocumentByDocument(document);
+        return documents;
+    }
 }
