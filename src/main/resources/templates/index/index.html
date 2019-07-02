@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -41,80 +41,17 @@
         <div class="nano">
             <div class="nano-content">
                 <ul>
-					<li class="label">Main</li>
-                    <li class="active"><a href="index.html"><i class="ti-home"></i> Dashboard </a></li>	
-                    
-                    
-                    <li><a href="app-profile.html"><i class="ti-user"></i> Profile</a></li>
-                    
-                    
-					
-					<li class="label">Features</li>
-					<li><a class="sidebar-sub-toggle"><i class="ti-layout"></i> UI Elements <span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            <li><a href="ui-accordion.html">Accordion</a></li>
-                            <li><a href="ui-alerts.html">Alerts</a></li>
-                            <li><a href="ui-badges.html">Badges</a></li>
-                            <li><a href="ui-button.html">Button</a></li>
-                            <li><a href="ui-dropdown.html">Dropdown</a></li>
-                            <li><a href="ui-images.html">Images</a></li>
-                            <li><a href="ui-list-group.html">List Group</a></li>
-                            <li><a href="ui-panels.html">Panels</a></li>
-                            <li><a href="ui-progressbar.html">Progressbar</a></li>
-                            <li><a href="ui-tab.html">Tab</a></li>
-                            <li><a href="ui-wells.html">Wells</a></li>
+                    <li class="label">个人</li>
+                    <li class="active"><a href="index.html"><i class="ti-home"></i> 主页 </a></li>
+                    <li><a href="app-profile.html"><i class="ti-user"></i> 个人信息 </a></li>
+                    <li class="label">分类信息</li>
+                </ul>
+                <ul th:each="classP: ${classResult}">
+                    <li><a class="sidebar-sub-toggle"><i class="ti-layout"></i> <span th:text="${classP.className}">UI Elements</span> <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul th:each="class: ${classP.childClass}">
+                            <li><a href="table-basic.html" th:text="${class.className}">Accordion</a></li>
                         </ul>
                     </li>
-					<li><a class="sidebar-sub-toggle"><i class="ti-panel"></i> Components <span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            <li><a href="uc-calendar.html">Calendar</a></li>
-                            <li><a href="uc-carousel.html">Carousel</a></li>
-                            <li><a href="uc-weather.html">Weather</a></li>
-                            <li><a href="uc-datamap.html">Datamap</a></li>
-                            <li><a href="uc-todo-list.html">To do</a></li>
-                            <li><a href="uc-scrollable.html">Scrollable</a></li>
-                            <li><a href="uc-sweetalert.html">Sweet Alert</a></li>
-                            <li><a href="uc-toastr.html">Toastr</a></li>
-                            <li><a href="uc-range-slider-basic.html">Basic Range Slider</a></li>
-                            <li><a href="uc-range-slider-advance.html">Advance Range Slider</a></li>
-                            <li><a href="uc-nestable.html">Nestable</a></li>
-                            <li><a href="uc-portlets.html">Portlets</a></li>
-                            
-                        </ul>
-                    </li>
-						
-					
-					<li><a class="sidebar-sub-toggle"><i class="ti-layout-grid4-alt"></i> Table <span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            <li><a href="table-basic.html">Basic</a></li>
-                            
-                        </ul>
-                    </li>
-					
-					<li><a class="sidebar-sub-toggle"><i class="ti-heart"></i> Icons <span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            <li><a href="font-themify.html">Themify</a></li>
-                        </ul>
-                    </li>
-					
-					
-					
-					
-					<li class="label">Form</li>
-					<li><a href="form-basic.html"><i class="ti-view-list-alt"></i> Basic Form </a></li>
-					
-					
-					
-					<li><a class="sidebar-sub-toggle"><i class="ti-target"></i> Pages <span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            <li><a href="page-login.html">Login</a></li>
-                            <li><a href="page-register.html">Register</a></li>
-                            <li><a href="page-reset-password.html">Forgot password</a></li>
-                        </ul>
-                    </li>
-					
-                    <li><a href="../documentation/index.html"><i class="ti-file"></i> Documentation</a></li><li><a><i class="ti-close"></i> Logout</a></li>
-
                 </ul>
             </div>
         </div>
@@ -324,7 +261,6 @@
                     </div>
                 </div>
             </div>
-            <div class="tlinks">Collect from <a href="http://www.cssmoban.com/" >建站模板</a></div>
             <!-- END CHAT BOX -->
             <!-- BEGIN SIDEBAR -->
             <div id="sidebar" class="right scroll">
