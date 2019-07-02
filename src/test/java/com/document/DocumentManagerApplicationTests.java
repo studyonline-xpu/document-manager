@@ -32,7 +32,7 @@ public class DocumentManagerApplicationTests {
 
     @Test
     public void testQueryByDocumentName() {
-        List<Document> documentList = documentService.queryByDocumentName("aa");
+        List<Document> documentList = documentService.queryByLikeDocumentName("aa");
         System.out.println(documentList);
     }
 
