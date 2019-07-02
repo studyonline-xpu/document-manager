@@ -49,7 +49,7 @@
                 <ul th:each="classP: ${classResult}">
                     <li><a class="sidebar-sub-toggle"><i class="ti-layout"></i> <span th:text="${classP.className}">UI Elements</span> <span class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul th:each="class: ${classP.childClass}">
-                            <li><a href="table-basic.html" th:text="${class.className}">Accordion</a></li>
+                            <li><a href="/table" th:text="${class.className}">Accordion</a></li>
                         </ul>
                     </li>
                 </ul>
