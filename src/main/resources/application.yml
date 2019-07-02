@@ -3,7 +3,7 @@ spring:
     username: root
     password: nanshen166013
     url: jdbc:mysql://101.132.78.78:3306/information_document
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource #指定数据源类型
 
     #   数据源其他配置
@@ -27,6 +27,8 @@ spring:
 
     #配置sql语句的位置，springboot就会帮我们执行该sql
     schema:
+  thymeleaf:
+    cache: false
 #      - classpath:sql/department.sql
 #      - classpath:sql/employee.sql
 #    schema:
