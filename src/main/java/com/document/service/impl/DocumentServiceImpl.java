@@ -2,9 +2,12 @@ package com.document.service.impl;
 
 import com.document.mapper.DocumentMapper;
 import com.document.pojo.Document;
+import com.document.pojo.DocumentExample;
 import com.document.service.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * 文档服务实现类
@@ -14,6 +17,20 @@ public class DocumentServiceImpl implements DocumentService {
 
     @Autowired
     private DocumentMapper documentMapper;
+
+    /**
+     * 根据文档类别的Id查询文档所有信息
+     * @param classId 文档类别的id
+     * @return
+     */
+    @Override
+    public List<Document> queryByClassId(String classId) {
+        DocumentExample example = new DocumentExample();
+        DocumentExample.Criteria criteria = example.createCriteria();
+        criteria.andClassIdEqualTo(classId);
+        List<Document> documentList = documentMapper.selectByExample(example);
+        return documentList;
+    }
 
     /**
      * 添加文档
