@@ -64,6 +64,11 @@ public class DocumentServiceImpl implements DocumentService {
         return false;
     }
 
+    /**
+     * 根据文档内容查询文档集合
+     * @param document 文档内容片段
+     * @return
+     */
     @Override
     public List<Document> selectDocumentByDocument(String document) {
         document = "%" + document + "%";

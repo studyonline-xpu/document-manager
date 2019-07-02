@@ -37,7 +37,11 @@ public interface DocumentService {
      */
     public boolean updateDocument(Document document);
 
-
+    /**
+     * 根据文档内容查询文档集合
+     * @param document 文档内容片段
+     * @return
+     */
     public List<Document> selectDocumentByDocument(String document);
 
 
