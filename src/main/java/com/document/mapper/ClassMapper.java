@@ -20,6 +20,21 @@ public interface ClassMapper {
 
     Class selectByPrimaryKey(String classId);
 
+    //自己加的方法
+    /**
+     * 查询父类类别的方法
+     * @return
+     */
+    List<Class> selectAllFatherClass();
+
+    //自己加的方法
+    /**
+     * 根据父类Id查询所有的子类的类别
+     * @param classId 父类类别的id
+     * @return
+     */
+    List<Class> selectAllClass(String classId);
+
     int updateByExampleSelective(@Param("record") Class record, @Param("example") ClassExample example);
 
     int updateByExample(@Param("record") Class record, @Param("example") ClassExample example);

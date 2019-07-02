@@ -15,4 +15,12 @@ public interface UserService {
      * @return
      */
     public User login(String userId, String password);
+
+    /**
+     * 注册方法
+     * @param user 用户实体
+     * @return
+     */
+    public boolean register(User user);
+
 }

@@ -17,13 +17,19 @@ public class pageController {
     public String login() {
         return "login";
     }
-    //
+
     @RequestMapping("/index")
     public String login1() {
         return "login";
     }
+
     @RequestMapping("/login")
     public String login2() {
         return "login";
+    }
+
+    @RequestMapping("/dashboard")
+    public String dashboard(){
+        return "index/dashboard";
     }
 }

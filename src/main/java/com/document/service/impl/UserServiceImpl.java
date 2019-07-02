@@ -18,4 +18,13 @@ public class UserServiceImpl implements UserService {
     public User login(String userId, String password) {
         return userMapper.selectLogin(userId, password);
     }
+
+    @Override
+    public boolean register(User user) {
+        int insert = userMapper.insert(user);
+        if (insert > 0) {
+            return true;
+        }
+        return false;
+    }
 }

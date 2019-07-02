@@ -68,6 +68,14 @@
   <sql id="Base_Column_List">
     class_id, class_name, is_father, father_id
   </sql>
+  <!--查询所有父类的类别-->
+  <select id="selectAllFatherClass" resultType="com.document.pojo.Class">
+    select * from class where is_father = 1
+  </select>
+  <!--根据父类的类别查询所有的子类类别-->
+  <select id="selectAllClass" parameterType="java.lang.String" resultType="com.document.pojo.Class">
+    select * from class where class_id = #{class_id}
+  </select>
   <select id="selectByExample" parameterType="com.document.pojo.ClassExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
