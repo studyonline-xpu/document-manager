@@ -7,6 +7,9 @@ import com.document.util.IdUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * @author LM_Code
  * @create 2019-07-01-15:57
@@ -31,8 +34,11 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public boolean register(User user) {
+        Calendar instance = Calendar.getInstance();
+        Date time = instance.getTime();
         String id = IdUtil.next();//生成唯一的id
         user.setUserId(id);
+        user.setCreateTime(time);
         int insert = userMapper.insert(user);
         if (insert > 0) {
             System.out.println(user);

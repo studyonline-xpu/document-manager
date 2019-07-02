@@ -8,7 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
+import java.util.Map;
 
+/**
+ * @author RenJing
+ */
 @Controller
 @RequestMapping("/document")
 public class DocumentController {
@@ -32,5 +36,26 @@ public class DocumentController {
             systemResult = SystemResult.build(400,"根据文档类别查询文档失败");
         }
         return systemResult;
+    }
+
+    /**
+     * 根据文档名称查询所有文档信息
+     * @param documentName 文档名称
+     * @param map 存放数据
+     * @return
+     */
+    @RequestMapping(value = "/queryByDocumentName")
+    public String queryByDocumentName(String documentName, Map map) {
+        List<Document> documents = documentService.queryByDocumentName(documentName);
+        SystemResult systemResult;
+        if (documents != null) {
+            systemResult = SystemResult.build(200, "根据文档名称查询成功");
+            systemResult.setData(documents);
+            map.put("documents", documents);
+            map.put("systemResult",systemResult);
+        } else {
+            systemResult = SystemResult.build(400, "根据文档名称查询失败");
+        }
+        return "redirect:/index/table-basic";
     }
 }
