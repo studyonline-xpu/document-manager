@@ -2,8 +2,9 @@ package com.document.mapper;
 
 import com.document.pojo.Document;
 import com.document.pojo.DocumentExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface DocumentMapper {
     long countByExample(DocumentExample example);

@@ -3,6 +3,7 @@
 <mapper namespace="com.document.mapper.DocumentMapper">
   <resultMap id="BaseResultMap" type="com.document.pojo.Document">
     <id column="document_id" jdbcType="VARCHAR" property="documentId" />
+    <result column="document_name" jdbcType="VARCHAR" property="documentName" />
     <result column="user_id" jdbcType="VARCHAR" property="userId" />
     <result column="class_id" jdbcType="VARCHAR" property="classId" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
@@ -70,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    document_id, user_id, class_id, update_time
+    document_id, document_name, user_id, class_id, update_time
   </sql>
   <sql id="Blob_Column_List">
     doucument, document_url
@@ -124,18 +125,21 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.document.pojo.Document">
-    insert into document (document_id, user_id, class_id, 
-      update_time, doucument, document_url
-      )
-    values (#{documentId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{classId,jdbcType=VARCHAR}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{doucument,jdbcType=LONGVARCHAR}, #{documentUrl,jdbcType=LONGVARCHAR}
-      )
+    insert into document (document_id, document_name, user_id, 
+      class_id, update_time, doucument, 
+      document_url)
+    values (#{documentId,jdbcType=VARCHAR}, #{documentName,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{classId,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{doucument,jdbcType=LONGVARCHAR}, 
+      #{documentUrl,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.document.pojo.Document">
     insert into document
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="documentId != null">
         document_id,
+      </if>
+      <if test="documentName != null">
+        document_name,
       </if>
       <if test="userId != null">
         user_id,
@@ -156,6 +160,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="documentId != null">
         #{documentId,jdbcType=VARCHAR},
+      </if>
+      <if test="documentName != null">
+        #{documentName,jdbcType=VARCHAR},
       </if>
       <if test="userId != null">
         #{userId,jdbcType=VARCHAR},
@@ -186,6 +193,9 @@
       <if test="record.documentId != null">
         document_id = #{record.documentId,jdbcType=VARCHAR},
       </if>
+      <if test="record.documentName != null">
+        document_name = #{record.documentName,jdbcType=VARCHAR},
+      </if>
       <if test="record.userId != null">
         user_id = #{record.userId,jdbcType=VARCHAR},
       </if>
@@ -209,6 +219,7 @@
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update document
     set document_id = #{record.documentId,jdbcType=VARCHAR},
+      document_name = #{record.documentName,jdbcType=VARCHAR},
       user_id = #{record.userId,jdbcType=VARCHAR},
       class_id = #{record.classId,jdbcType=VARCHAR},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
@@ -221,6 +232,7 @@
   <update id="updateByExample" parameterType="map">
     update document
     set document_id = #{record.documentId,jdbcType=VARCHAR},
+      document_name = #{record.documentName,jdbcType=VARCHAR},
       user_id = #{record.userId,jdbcType=VARCHAR},
       class_id = #{record.classId,jdbcType=VARCHAR},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP}
@@ -231,6 +243,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.document.pojo.Document">
     update document
     <set>
+      <if test="documentName != null">
+        document_name = #{documentName,jdbcType=VARCHAR},
+      </if>
       <if test="userId != null">
         user_id = #{userId,jdbcType=VARCHAR},
       </if>
@@ -251,7 +266,8 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.document.pojo.Document">
     update document
-    set user_id = #{userId,jdbcType=VARCHAR},
+    set document_name = #{documentName,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
       class_id = #{classId,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       doucument = #{doucument,jdbcType=LONGVARCHAR},
@@ -260,7 +276,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.document.pojo.Document">
     update document
-    set user_id = #{userId,jdbcType=VARCHAR},
+    set document_name = #{documentName,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
       class_id = #{classId,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where document_id = #{documentId,jdbcType=VARCHAR}
