@@ -17,11 +17,11 @@ public interface DocumentService {
     public List<Document> queryByClassId(String classId);
 
     /**
-     * 根据文档名称查询文档所有信息
+     * 根据文档名称模糊查询
      * @param documentName 文档的名称
      * @return
      */
-    public List<Document> queryByDocumentName(String documentName);
+    public List<Document> queryByLikeDocumentName(String documentName);
 
     /**
      * 添加文档
@@ -39,8 +39,6 @@ public interface DocumentService {
 
     /*public boolean deleteDocumentById(String id);
 
-    public List<Document> queryByAllText(String allText);
-
-    public List<Document> queryByLike(String like);*/
+    public List<Document> queryByAllText(String allText);*/
 
 }
