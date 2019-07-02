@@ -74,7 +74,7 @@
   </select>
   <!--根据父类的类别查询所有的子类类别-->
   <select id="selectAllClass" parameterType="java.lang.String" resultType="com.document.pojo.Class">
-    select * from class where class_id = #{class_id}
+    select * from class where father_id = #{fatheId}
   </select>
   <select id="selectByExample" parameterType="com.document.pojo.ClassExample" resultMap="BaseResultMap">
     select

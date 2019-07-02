@@ -30,10 +30,10 @@ public interface ClassMapper {
     //自己加的方法
     /**
      * 根据父类Id查询所有的子类的类别
-     * @param classId 父类类别的id
+     * @param fatherId 父类类别的id
      * @return
      */
-    List<Class> selectAllClass(String classId);
+    List<Class> selectAllClass(String fatherId);
 
     int updateByExampleSelective(@Param("record") Class record, @Param("example") ClassExample example);
 
