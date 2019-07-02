@@ -4,5 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <!--配置-->
 <configuration>
-
+    <!--配置开启驼峰命名规范-->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
 </configuration>
