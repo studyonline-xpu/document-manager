@@ -285,4 +285,8 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where document_id = #{documentId,jdbcType=VARCHAR}
   </update>
+<!--  根据内容检索文档-->
+  <select id="selectDocumentByDocument" resultMap="ResultMapWithBLOBs">
+    select * from document where document.doucument like #{document}
+  </select>
 </mapper>

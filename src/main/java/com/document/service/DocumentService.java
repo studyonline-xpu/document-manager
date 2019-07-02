@@ -17,7 +17,7 @@ public interface DocumentService {
     public List<Document> queryByClassId(String classId);
 
     /**
-     * 根据文档名称模糊查询
+     * 根据文档名称查询文档所有信息
      * @param documentName 文档的名称
      * @return
      */
@@ -37,8 +37,12 @@ public interface DocumentService {
      */
     public boolean updateDocument(Document document);
 
-    /*public boolean deleteDocumentById(String id);
+    /**
+     * 根据文档内容查询文档集合
+     * @param document 文档内容片段
+     * @return
+     */
+    public List<Document> selectDocumentByDocument(String document);
 
-    public List<Document> queryByAllText(String allText);*/
 
 }

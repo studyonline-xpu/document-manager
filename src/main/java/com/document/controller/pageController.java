@@ -28,4 +28,8 @@ public class pageController {
         return "login";
     }
 
+    @RequestMapping("/table")
+    public String table(){
+        return "index/table-basic";
+    }
 }
