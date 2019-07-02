@@ -20,12 +20,18 @@ public class UserController {
     @Autowired
     UserService userService;//注入
 
+    /**
+     * 登陆方法：post方法请求
+     * @param userId 用户id
+     * @param password 用户密码
+     * @param model 存入登陆失败提示
+     * @return
+     */
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public String login(String userId, String password, Model model){
         User user = userService.login(userId, password);
         SystemResult result;
         if(user != null){
-            System.out.println(user);
             return "redirect:/main.html";
         }
         else{
