@@ -24,8 +24,10 @@ public class UserController {
     public String login(String userId, String password, Model model){
         User user = userService.login(userId, password);
         SystemResult result;
-        if(user != null)
-            return "index/dashboard";
+        if(user != null){
+            System.out.println(user);
+            return "redirect:/main.html";
+        }
         else{
             model.addAttribute("msg", "账号或密码错误!");
             return "login";
