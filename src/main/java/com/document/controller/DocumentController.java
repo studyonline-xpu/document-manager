@@ -77,6 +77,6 @@ public class DocumentController {
         }else {
             systemResult = SystemResult.build(400, "根据文档内容查询失败");
         }
-        return "redirect:/index/table-basic";
+        return "/index/table-basic";
     }
 }
