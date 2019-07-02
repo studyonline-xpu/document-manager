@@ -58,4 +58,25 @@ public class DocumentController {
         }
         return "redirect:/index/table-basic";
     }
+
+    /**
+     * 根据文档内容查询文档集合
+     * @param document 文档内容片段
+     * @param map
+     * @return
+     */
+    @RequestMapping("/selectDocumentByDocument")
+    public String selectDocumentByDocument(String document, Map map){
+        List<Document> documents = documentService.selectDocumentByDocument(document);
+        SystemResult systemResult;
+        if(documents != null){
+            systemResult = SystemResult.build(200, "根据文档内容查询成功");
+            systemResult.setData(documents);
+            map.put("documents", documents);
+            map.put("systemResult", systemResult);
+        }else {
+            systemResult = SystemResult.build(400, "根据文档内容查询失败");
+        }
+        return "redirect:/index/table-basic";
+    }
 }

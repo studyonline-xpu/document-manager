@@ -34,4 +34,11 @@ public interface DocumentMapper {
     int updateByPrimaryKeyWithBLOBs(Document record);
 
     int updateByPrimaryKey(Document record);
+
+    /**
+     * 根据内容检索文档
+     * @param document 内容片段
+     * @return
+     */
+    List<Document> selectDocumentByDocument(String document);
 }

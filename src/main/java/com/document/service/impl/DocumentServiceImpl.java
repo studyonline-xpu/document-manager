@@ -65,4 +65,11 @@ public class DocumentServiceImpl implements DocumentService {
     public boolean updateDocument(Document document) {
         return false;
     }
+
+    @Override
+    public List<Document> selectDocumentByDocument(String document) {
+        document = "%" + document + "%";
+        List<Document> documents = documentMapper.selectDocumentByDocument(document);
+        return documents;
+    }
 }

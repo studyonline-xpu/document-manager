@@ -37,10 +37,10 @@ public interface DocumentService {
      */
     public boolean updateDocument(Document document);
 
-    /*public boolean deleteDocumentById(String id);
+//    public boolean deleteDocumentById(String id);
 
-    public List<Document> queryByAllText(String allText);
+    public List<Document> selectDocumentByDocument(String document);
 
-    public List<Document> queryByLike(String like);*/
+//    public List<Document> queryByLike(String like);
 
 }
