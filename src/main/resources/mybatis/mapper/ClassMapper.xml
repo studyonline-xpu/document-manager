@@ -6,6 +6,7 @@
     <result column="class_name" jdbcType="VARCHAR" property="className" />
     <result column="is_father" jdbcType="BIT" property="isFather" />
     <result column="father_id" jdbcType="VARCHAR" property="fatherId" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,16 +67,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    class_id, class_name, is_father, father_id
+    class_id, class_name, is_father, father_id, sort
   </sql>
-  <!--查询所有父类的类别-->
-  <select id="selectAllFatherClass" resultType="com.document.pojo.Class">
-    select * from class where is_father = 1
-  </select>
-  <!--根据父类的类别查询所有的子类类别-->
-  <select id="selectAllClass" parameterType="java.lang.String" resultType="com.document.pojo.Class">
-    select * from class where father_id = #{fatheId}
-  </select>
   <select id="selectByExample" parameterType="com.document.pojo.ClassExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -108,9 +101,9 @@
   </delete>
   <insert id="insert" parameterType="com.document.pojo.Class">
     insert into class (class_id, class_name, is_father, 
-      father_id)
+      father_id, sort)
     values (#{classId,jdbcType=VARCHAR}, #{className,jdbcType=VARCHAR}, #{isFather,jdbcType=BIT}, 
-      #{fatherId,jdbcType=VARCHAR})
+      #{fatherId,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.document.pojo.Class">
     insert into class
@@ -127,6 +120,9 @@
       <if test="fatherId != null">
         father_id,
       </if>
+      <if test="sort != null">
+        sort,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="classId != null">
@@ -140,6 +136,9 @@
       </if>
       <if test="fatherId != null">
         #{fatherId,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -164,6 +163,9 @@
       <if test="record.fatherId != null">
         father_id = #{record.fatherId,jdbcType=VARCHAR},
       </if>
+      <if test="record.sort != null">
+        sort = #{record.sort,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -174,7 +176,8 @@
     set class_id = #{record.classId,jdbcType=VARCHAR},
       class_name = #{record.className,jdbcType=VARCHAR},
       is_father = #{record.isFather,jdbcType=BIT},
-      father_id = #{record.fatherId,jdbcType=VARCHAR}
+      father_id = #{record.fatherId,jdbcType=VARCHAR},
+      sort = #{record.sort,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -191,6 +194,9 @@
       <if test="fatherId != null">
         father_id = #{fatherId,jdbcType=VARCHAR},
       </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
     </set>
     where class_id = #{classId,jdbcType=VARCHAR}
   </update>
@@ -198,7 +204,16 @@
     update class
     set class_name = #{className,jdbcType=VARCHAR},
       is_father = #{isFather,jdbcType=BIT},
-      father_id = #{fatherId,jdbcType=VARCHAR}
+      father_id = #{fatherId,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER}
     where class_id = #{classId,jdbcType=VARCHAR}
   </update>
+  <!--查询所有父类的类别-->
+  <select id="selectAllFatherClass" resultType="com.document.pojo.Class">
+    select * from class where is_father = 1 order by class.sort asc
+  </select>
+  <!--根据父类的类别查询所有的子类类别-->
+  <select id="selectAllClass" parameterType="java.lang.String" resultType="com.document.pojo.Class">
+    select * from class where father_id = #{fatheId} order by class.sort asc
+  </select>
 </mapper>

@@ -114,9 +114,6 @@
     from document
     where document_id = #{documentId,jdbcType=VARCHAR}
   </select>
-  <select id="selectByLikeDocumentName" parameterType="java.lang.String" resultType="com.document.pojo.Document">
-    select * from document where document_name like #{document_name}
-  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from document
     where document_id = #{documentId,jdbcType=VARCHAR}
@@ -285,7 +282,11 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where document_id = #{documentId,jdbcType=VARCHAR}
   </update>
-<!--  根据内容检索文档-->
+  <!--  根据名称检索文档-->
+  <select id="selectByLikeDocumentName" parameterType="java.lang.String" resultType="com.document.pojo.Document">
+    select * from document where document_name like #{document_name}
+  </select>
+  <!--  根据内容检索文档-->
   <select id="selectDocumentByDocument" resultMap="ResultMapWithBLOBs">
     select * from document where document.doucument like #{document}
   </select>
