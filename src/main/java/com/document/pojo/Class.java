@@ -1,6 +1,7 @@
 package com.document.pojo;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Class implements Serializable {
     private String classId;
@@ -14,7 +15,17 @@ public class Class implements Serializable {
     private Integer sort;
 
     private static final long serialVersionUID = 1L;
+    //自己加的属性及相关方法
+    private List<Class> childClass;
 
+    public List<Class> getChildClass() {
+        return childClass;
+    }
+
+    public void setChildClass(List<Class> childClass) {
+        this.childClass = childClass;
+    }
+    //结束
     public String getClassId() {
         return classId;
     }
