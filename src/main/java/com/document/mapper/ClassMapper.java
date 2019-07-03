@@ -2,8 +2,9 @@ package com.document.mapper;
 
 import com.document.pojo.Class;
 import com.document.pojo.ClassExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface ClassMapper {
     long countByExample(ClassExample example);
@@ -20,6 +21,13 @@ public interface ClassMapper {
 
     Class selectByPrimaryKey(String classId);
 
+    int updateByExampleSelective(@Param("record") Class record, @Param("example") ClassExample example);
+
+    int updateByExample(@Param("record") Class record, @Param("example") ClassExample example);
+
+    int updateByPrimaryKeySelective(Class record);
+
+    int updateByPrimaryKey(Class record);
     //自己加的方法
     /**
      * 查询父类类别的方法
@@ -34,12 +42,4 @@ public interface ClassMapper {
      * @return
      */
     List<Class> selectAllClass(String fatherId);
-
-    int updateByExampleSelective(@Param("record") Class record, @Param("example") ClassExample example);
-
-    int updateByExample(@Param("record") Class record, @Param("example") ClassExample example);
-
-    int updateByPrimaryKeySelective(Class record);
-
-    int updateByPrimaryKey(Class record);
 }

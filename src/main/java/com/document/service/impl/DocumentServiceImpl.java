@@ -28,7 +28,7 @@ public class DocumentServiceImpl implements DocumentService {
         DocumentExample example = new DocumentExample();
         DocumentExample.Criteria criteria = example.createCriteria();
         criteria.andClassIdEqualTo(classId);
-        List<Document> documentList = documentMapper.selectByExample(example);
+        List<Document> documentList = documentMapper.selectByExampleWithBLOBs(example);
         return documentList;
     }
 
