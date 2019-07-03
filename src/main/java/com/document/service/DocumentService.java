@@ -44,5 +44,17 @@ public interface DocumentService {
      */
     public List<Document> selectDocumentByDocument(String document);
 
+    /**
+     * 根据userId查看个人履历
+     * @param userId
+     * @return
+     */
+    List<Document> queryByUserId(String userId);
 
+    /**
+     * 部门经理查看部门简历
+     * @param departmentId 部门id
+     * @return
+     */
+    List<Document> queryByDepartmentId(String departmentId);
 }

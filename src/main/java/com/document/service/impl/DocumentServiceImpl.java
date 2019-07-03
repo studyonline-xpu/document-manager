@@ -72,4 +72,24 @@ public class DocumentServiceImpl implements DocumentService {
         List<Document> documents = documentMapper.selectDocumentByDocument(document);
         return documents;
     }
+
+    /**
+     * 根据userId查看个人履历
+     * @param userId
+     * @return
+     */
+    @Override
+    public List<Document> queryByUserId(String userId) {
+        return documentMapper.queryByUserId(userId);
+    }
+
+    /**
+     * 部门经理查看部门简历
+     * @param departmentId 部门id
+     * @return
+     */
+    @Override
+    public List<Document> queryByDepartmentId(String departmentId) {
+        return documentMapper.queryByDepartmentId(departmentId);
+    }
 }

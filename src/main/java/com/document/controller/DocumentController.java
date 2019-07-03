@@ -3,6 +3,7 @@ package com.document.controller;
 import com.document.pojo.Class;
 import com.document.pojo.Document;
 import com.document.pojo.SystemResult;
+import com.document.pojo.User;
 import com.document.service.ClassService;
 import com.document.service.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,19 @@ public class DocumentController {
     @RequestMapping(value = "/queryByClassId")
     public String queryByClassId(String classId, Map map, HttpSession httpSession){
         Object user = httpSession.getAttribute("user");
-        System.out.println(user);
-        List<Document> documents = documentService.queryByClassId(classId);
+        List<Document> documents = null;
+        if(classId.equals("32") && !user.getClass().getName().equals("Manager") && !((User)user).getRoleId().equals("1")){
+            if(!((User) user).getRoleId().equals("2")){
+                System.out.println("不是部门经理");
+                documents = documentService.queryByUserId(((User) user).getUserId());//不是部门经理
+            }else {
+                System.out.println("是部门经理");
+                documents = documentService.queryByDepartmentId(((User)user).getDepartmentId());
+            }
+        } else{
+            System.out.println("最高权限");
+            documents = documentService.queryByClassId(classId);
+        }
         List<Class> classes = classService.queryAllClass();
         SystemResult systemResult;
         if (documents != null) {
