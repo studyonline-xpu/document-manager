@@ -260,4 +260,9 @@
   <select id="selectLogin" resultMap="BaseResultMap">
     select * from user where user_id = #{userId} and password = #{password}
   </select>
+  <!--自己加的方法-->
+  <!--后台：查询所有用户-->
+  <select id="selectAllUser" resultMap="BaseResultMap">
+    select * from user
+  </select>
 </mapper>
