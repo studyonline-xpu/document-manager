@@ -284,10 +284,10 @@
   </update>
   <!--  根据名称检索文档-->
   <select id="selectByLikeDocumentName" parameterType="java.lang.String" resultType="com.document.pojo.Document">
-    select * from document where document_name like #{document_name}
+    select * from document where document_name like #{document_name} order by document.update_time desc
   </select>
   <!--  根据内容检索文档-->
   <select id="selectDocumentByDocument" resultMap="ResultMapWithBLOBs">
-    select * from document where document.doucument like #{document}
+    select * from document where document.doucument like #{document} order by document.update_time desc
   </select>
 </mapper>
