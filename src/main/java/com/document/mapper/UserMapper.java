@@ -29,11 +29,19 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
     //自己加的方法
+
     /**
      * 根据id和密码登录
-     * @param userId 用户id
+     *
+     * @param userId   用户id
      * @param password 用户密码
      * @return
      */
-    User selectLogin(@Param("userId")String userId, @Param("password")String password);
+    User selectLogin(@Param("userId") String userId, @Param("password") String password);
+
+    /**
+     * 后台：查询所有用户
+     * @return
+     */
+    List<User> selectAllUser();
 }

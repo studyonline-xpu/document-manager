@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -59,5 +60,21 @@ public class UserController {
             map.put("msg", "注册成功，请您登录！");
         }
         return result;
+    }
+
+    @RequestMapping("/selectAllUser")
+    public String selectAllUser(Map map) {
+        List<User> userList = userService.selectAllUser();
+        SystemResult systemResult;
+        if (userList != null) {
+            systemResult = SystemResult.build(200, "查询所有用户成功");
+            systemResult.setData(userList);
+            return "";
+        } else {
+            systemResult = SystemResult.build(400, "查询所有用户失败");
+        }
+        map.put("systemResult", systemResult);
+        map.put("userList", userList);
+        return "";
     }
 }

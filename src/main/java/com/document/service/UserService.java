@@ -2,6 +2,8 @@ package com.document.service;
 
 import com.document.pojo.User;
 
+import java.util.List;
+
 /**
  * @author LM_Code
  * @create 2019-07-01-15:52
@@ -23,4 +25,9 @@ public interface UserService {
      */
     public boolean register(User user);
 
+    /**
+     * 后台：查询所有用户
+     * @return
+     */
+    public List<User> selectAllUser();
 }
