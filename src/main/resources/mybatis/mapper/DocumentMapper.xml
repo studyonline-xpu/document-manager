@@ -284,6 +284,13 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where document_id = #{documentId,jdbcType=VARCHAR}
   </update>
+<!--  根据classId进行查询-->
+  <select id="queryByClassId" resultMap="ResultMapWithBLOBs">
+    select document.*, user.user_name from document, user
+    where document.class_id = #{classId}
+    and document.user_id = user.user_id
+    order by document.update_time desc
+  </select>
   <!--  根据名称检索文档-->
   <select id="selectByLikeDocumentName" parameterType="java.lang.String" resultType="com.document.pojo.Document">
     select document.*, user.user_name from document, user

@@ -25,10 +25,7 @@ public class DocumentServiceImpl implements DocumentService {
      */
     @Override
     public List<Document> queryByClassId(String classId) {
-        DocumentExample example = new DocumentExample();
-        DocumentExample.Criteria criteria = example.createCriteria();
-        criteria.andClassIdEqualTo(classId);
-        List<Document> documentList = documentMapper.selectByExampleWithBLOBs(example);
+        List<Document> documentList = documentMapper.queryByClassId(classId);
         return documentList;
     }
 

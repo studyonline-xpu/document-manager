@@ -37,6 +37,12 @@ public interface DocumentMapper {
     //自己添加的方法
 
     /**
+     * 根据classId进行查询
+     * @param classId 类别id
+     * @return
+     */
+    List<Document> queryByClassId(String classId);
+    /**
      * 根据名称检索文档
      * @param documentName
      * @return
