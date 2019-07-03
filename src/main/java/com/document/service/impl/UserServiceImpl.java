@@ -41,7 +41,6 @@ public class UserServiceImpl implements UserService {
         user.setCreateTime(time);
         int insert = userMapper.insert(user);
         if (insert > 0) {
-            System.out.println(user);
             return true;
         }
         return false;

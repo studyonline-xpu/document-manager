@@ -1,7 +1,9 @@
 package com.document.controller;
 
+import com.document.pojo.Class;
 import com.document.pojo.Document;
 import com.document.pojo.SystemResult;
+import com.document.service.ClassService;
 import com.document.service.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,8 @@ import java.util.Map;
 public class DocumentController {
     @Autowired
     DocumentService documentService;
+    @Autowired
+    ClassService classService;
 
     /**
      * 根据文档类别查询文档所有信息
@@ -25,9 +29,9 @@ public class DocumentController {
      * @return
      */
     @RequestMapping(value = "/queryByClassId")
-    @ResponseBody
-    public SystemResult queryByClassId(String classId){
+    public String queryByClassId(String classId,Map map){
         List<Document> documents = documentService.queryByClassId(classId);
+        List<Class> classes = classService.queryAllClass();
         SystemResult systemResult;
         if (documents != null) {
             systemResult = SystemResult.build(200, "根据文档类别查询文档成功");
@@ -35,7 +39,9 @@ public class DocumentController {
         } else {
             systemResult = SystemResult.build(400,"根据文档类别查询文档失败");
         }
-        return systemResult;
+        map.put("result", documents);
+        map.put("classes",classes);
+        return "index/table-basic";
     }
 
     /**

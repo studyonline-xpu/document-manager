@@ -8,6 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -47,12 +50,14 @@ public class UserController {
      * @param user 用户实体
      * @return
      */
+    @ResponseBody
     @RequestMapping(value = "register",method = RequestMethod.POST)
-    public String register(User user) {
+    public SystemResult register(User user, Map<String,Object> map) {
         boolean register = userService.register(user);
+        SystemResult result = new SystemResult(200,"OK",null);
         if (register) {
-            return "redirect:/index";
+            map.put("msg", "注册成功，请您登录！");
         }
-        return "redirect:/register";
+        return result;
     }
 }

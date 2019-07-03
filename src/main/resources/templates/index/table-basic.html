@@ -1,5 +1,5 @@
     <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -32,221 +32,28 @@
 
 <body>
 
-    <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
-        <div class="nano">
-            <div class="nano-content">
-                <ul>
-					<li class="label">Main</li>
-                    <li class="active"><a href="index.html"><i class="ti-home"></i> Dashboard </a></li>
-                    <li><a href="app-profile.html"><i class="ti-user"></i> Profile</a></li>
-					<li class="label">Features</li>
-					<li><a class="sidebar-sub-toggle"><i class="ti-layout"></i> UI Elements <span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            <li><a href="table-basic.html">Accordion</a></li>
-                            <li><a href="table-basic.html">Alerts</a></li>
-                            <li><a href="table-basic.html">Badges</a></li>
-                            <li><a href="table-basic.html">Button</a></li>
-                            <li><a href="table-basic.html">Dropdown</a></li>
-                            <li><a href="table-basic.html">Images</a></li>
-                            <li><a href="table-basic.html">List Group</a></li>
-                            <li><a href="table-basic.html">Panels</a></li>
-                            <li><a href="table-basic.html">Progressbar</a></li>
-                            <li><a href="table-basic.html">Tab</a></li>
-                            <li><a href="table-basic.html">Wells</a></li>
-                        </ul>
-                    </li>
-					<li><a class="sidebar-sub-toggle"><i class="ti-panel"></i> Components <span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            <li><a href="table-basic.html">Calendar</a></li>
-                            <li><a href="table-basic.html">Carousel</a></li>
-                            <li><a href="table-basic.html">Weather</a></li>
-                            <li><a href="table-basic.html">Datamap</a></li>
-                            <li><a href="table-basic.html">To do</a></li>
-                            <li><a href="table-basic.html">Scrollable</a></li>
-                            <li><a href="table-basic.html">Sweet Alert</a></li>
-                            <li><a href="table-basic.html">Toastr</a></li>
-                            <li><a href="table-basic.html">Basic Range Slider</a></li>
-                            <li><a href="table-basic.html">Advance Range Slider</a></li>
-                            <li><a href="table-basic.html">Nestable</a></li>
-                            <li><a href="table-basic.html">Portlets</a></li>
-                            
-                        </ul>
-                    </li>
-						
-					
-					<li><a class="sidebar-sub-toggle"><i class="ti-layout-grid4-alt"></i> Table <span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            <li><a href="table-basic.html">Basic</a></li>
-                            
-                        </ul>
-                    </li>
-					
-					<li><a class="sidebar-sub-toggle"><i class="ti-heart"></i> Icons <span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            <li><a href="table-basic.html">Themify</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div><!-- /# sidebar -->
-
-    <div class="header">
-        <div class="pull-left">
-            <div class="logo" id="sideLogo">
-                <a href="index.html">
-                    <img class="full-logo" src="../index/images/logo-big.png" alt="SimDahs">
-                    <img class="small-logo" src="../index/images/logo-small.png" alt="SimDahs">
-                </a>
-            </div>
-            <div class="hamburger sidebar-toggle">
-                <span class="ti-menu"></span>
-            </div>
-        </div>
-
-        <div class="pull-right p-r-15">
+<div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures" th:fragment="leftSide">
+    <div class="nano">
+        <div class="nano-content">
             <ul>
-                <li class="header-icon dib"><i class="ti-bell"></i>
-                    <div class="drop-down">
-                        <div class="dropdown-content-heading">
-                            <span class="text-left">Recent Notifications</span>
-                        </div>
-                        <div class="dropdown-content-body">
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <img class="pull-left m-r-10 avatar-img" src="../index/images/avatar/3.jpg" alt="" />
-                                        <div class="notification-content">
-                                            <small class="notification-timestamp pull-right">02:34 PM</small>
-                                            <div class="notification-heading">Mr. Wolf</div>
-                                            <div class="notification-text">5 members joined today </div>
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#">
-                                        <img class="pull-left m-r-10 avatar-img" src="../index/images/avatar/3.jpg" alt="" />
-                                        <div class="notification-content">
-                                            <small class="notification-timestamp pull-right">02:34 PM</small>
-                                            <div class="notification-heading">Sofiya</div>
-                                            <div class="notification-text">likes a photo of you</div>
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#">
-                                        <img class="pull-left m-r-10 avatar-img" src="../index/images/avatar/3.jpg" alt="" />
-                                        <div class="notification-content">
-                                            <small class="notification-timestamp pull-right">02:34 PM</small>
-                                            <div class="notification-heading">Richard</div>
-                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#">
-                                        <img class="pull-left m-r-10 avatar-img" src="../index/images/avatar/3.jpg" alt="" />
-                                        <div class="notification-content">
-                                            <small class="notification-timestamp pull-right">02:34 PM</small>
-                                            <div class="notification-heading">Sara Maggi</div>
-                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="text-center">
-                                    <a href="#" class="more-link">See All</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="header-icon dib"><i class="ti-email"></i>
-                    <div class="drop-down">
-                        <div class="dropdown-content-heading">
-                            <span class="text-left">2 New Messages</span>
-                            <a href="email.html"><i class="ti-pencil-alt pull-right"></i></a>
-                        </div>
-                        <div class="dropdown-content-body">
-                            <ul>
-                                <li class="notification-unread">
-                                    <a href="#">
-                                        <img class="pull-left m-r-10 avatar-img" src="../index/images/avatar/1.jpg" alt="" />
-                                        <div class="notification-content">
-                                            <small class="notification-timestamp pull-right">02:34 PM</small>
-                                            <div class="notification-heading">John Doe</div>
-                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <li class="notification-unread">
-                                    <a href="#">
-                                        <img class="pull-left m-r-10 avatar-img" src="../index/images/avatar/2.jpg" alt="" />
-                                        <div class="notification-content">
-                                            <small class="notification-timestamp pull-right">02:34 PM</small>
-                                            <div class="notification-heading">Sara Maggi</div>
-                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#">
-                                        <img class="pull-left m-r-10 avatar-img" src="../index/images/avatar/3.jpg" alt="" />
-                                        <div class="notification-content">
-                                            <small class="notification-timestamp pull-right">02:34 PM</small>
-                                            <div class="notification-heading">John Doe</div>
-                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#">
-                                        <img class="pull-left m-r-10 avatar-img" src="../index/images/avatar/2.jpg" alt="" />
-                                        <div class="notification-content">
-                                            <small class="notification-timestamp pull-right">02:34 PM</small>
-                                            <div class="notification-heading">Sara Maggi</div>
-                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="text-center">
-                                    <a href="#" class="more-link">See All</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-				<li class="header-icon dib chat-sidebar-icon"><i class="ti-comment"></i></li>
-                <li class="header-icon dib"><img class="avatar-img" src="../index/images/avatar/1.jpg" alt="" /> <span class="user-avatar">Wolf <i class="ti-angle-down f-s-10"></i></span>
-                    <div class="drop-down dropdown-profile">
-                        <div class="dropdown-content-heading">
-                            <span class="text-left">Upgrade Now</span>
-                            <p class="trial-day">30 Days Trail</p>
-                        </div>
-                        <div class="dropdown-content-body">
-                            <ul>
-                                <li><a href="#"><i class="ti-user"></i> <span>Profile</span></a></li>
-                                <li><a href="#"><i class="ti-wallet"></i> <span>My Balance</span></a></li>
-                                <li><a href="#"><i class="ti-write"></i> <span>My Task</span></a></li>
-                                <li><a href="#"><i class="ti-calendar"></i> <span>My Calender</span></a></li>
-                                <li><a href="#"><i class="ti-email"></i> <span>Inbox</span></a></li>
-                                <li><a href="#"><i class="ti-settings"></i> <span>Setting</span></a></li>
-                                <li><a href="#"><i class="ti-help-alt"></i> <span>Help</span></a></li>
-                                <li><a href="#"><i class="ti-lock"></i> <span>Lock Screen</span></a></li>
-                                <li><a href="#"><i class="ti-power-off"></i> <span>Logout</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
+                <li class="label">个人</li>
+                <li class="active"><a href="index.html"><i class="ti-home"></i> 主页 </a></li>
+                <li><a href="app-profile.html"><i class="ti-user"></i> 个人信息 </a></li>
+                <li class="label">分类信息</li>
+            </ul>
+            <ul th:each="classP: ${classes}">
+                <li><a class="sidebar-sub-toggle"><i class="ti-layout"></i> <span th:text="${classP.className}">UI Elements</span> <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <ul th:each="class: ${classP.childClass}">
+                        <li><a th:href="@{'/document/queryByClassId?classId='+${class.classId}}" th:text="${class.className}">Accordion</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
     </div>
+</div>
+    <!-- /# sidebar -->
 
+    <div th:replace="/index/commons/bar::head"></div>
 	<div class="chat-sidebar">
         <!-- BEGIN chat -->
         <div id="mmc-chat" class="color-default">
@@ -425,32 +232,18 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Name</th>
-                                                <th>Status</th>
+                                                <th>Class</th>
                                                 <th>Date</th>
-                                                <th>Price</th>
+                                                <th>Enclosure</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>Kolor Tea Shirt For Man</td>
+                                            <tr th:each="document: ${result}">
+                                                <th scope="row" th:text="${document.documentId}"></th>
+                                                <td th:text="${document.documentName}"></td>
                                                 <td><span class="badge badge-primary">Sale</span></td>
-                                                <td>January 22</td>
-                                                <td class="color-primary">$21.56</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Kolor Tea Shirt For Women</td>
-                                                <td><span class="badge badge-success">Tax</span></td>
-                                                <td>January 30</td>
-                                                <td class="color-success">$55.32</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>Blue Backpack For Baby</td>
-                                                <td><span class="badge badge-danger">Extended</span></td>
-                                                <td>January 25</td>
-                                                <td class="color-danger">$14.85</td>
+                                                <td th:text="${document.updateTime}"></td>
+                                                <td class="color-primary"><a th:href='@{${document.documentUrl}}'>点击预览附件</a></td>
                                             </tr>
                                         </tbody>
                                     </table>

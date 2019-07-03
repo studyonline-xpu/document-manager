@@ -122,24 +122,23 @@
                         // $(this).addClass('animate');
                         // $(this).data('text', $(this).val());
                         // $(this).val(settings.sendingText);
-                        // var d = {};
-                        // var t = $('form').serializeArray();
-                        // $.each(t, function () {
-                        //     d[this.name] = this.value;
-                        // });
-                        // $.ajax({
-                        //     url: "http://localhost:8080/user/register",
-                        //     type: "post",
-                        //     dataType: "json",
-                        //     data: d,
-                        //     success: function (res) {
-                        //         console.log(res);
-                        //         $(location).attr('href','http://localhost:8080/');
-                        //     }
-                        // })
-                        $("#form").submit();
-                        return true;
+                        var d = {};
+                        var t = $('form').serializeArray();
+                        $.each(t, function () {
+                            d[this.name] = this.value;
+                        });
+                        $.ajax({
+                            url: "http://localhost:8080/user/register",
+                            type: "post",
+                            dataType: "json",
+                            data: d,
+                            success: function (res) {
+                                console.log(res);
+                                $(location).attr('href','http://localhost:8080/');
+                            }
+                        });
                     }
+                    return false;
                 });
             }
             function validate() {

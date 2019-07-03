@@ -9,21 +9,21 @@ html,body {
 	background-color: #eff3f6;
 	position:relative; height:auto; min-height:100%;
 }
-@media (min-width: 660px) #wrap {
-	min-width: 650px;
-}
-@media (min-width: 768px) #wrap {
-	width: 100%;
-	min-width: 750px;
-}
-@media (min-width: 992px) #wrap {
-	width: 100%;
-	min-width: 970px;
-}
-@media (min-width: 1200px) #wrap {
-	width: 100%;
-	min-width: 1170px;
-}
+/*@media (min-width: 660px) #wrap {*/
+	/*min-width: 650px;*/
+/*}*/
+/*@media (min-width: 768px) #wrap {*/
+	/*width: 100%;*/
+	/*min-width: 750px;*/
+/*}*/
+/*@media (min-width: 992px) #wrap {*/
+	/*width: 100%;*/
+	/*min-width: 970px;*/
+/*}*/
+/*@media (min-width: 1200px) #wrap {*/
+	/*width: 100%;*/
+	/*min-width: 1170px;*/
+/*}*/
 .leftMeun {
 	position:absolute; top:0; bottom:0; left:0; z-index:99; width:180px;
 	background-color: #4d5e70;
