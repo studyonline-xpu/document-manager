@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 
@@ -29,7 +31,9 @@ public class DocumentController {
      * @return
      */
     @RequestMapping(value = "/queryByClassId")
-    public String queryByClassId(String classId,Map map){
+    public String queryByClassId(String classId, Map map, HttpSession httpSession){
+        Object user = httpSession.getAttribute("user");
+        System.out.println(user);
         List<Document> documents = documentService.queryByClassId(classId);
         List<Class> classes = classService.queryAllClass();
         SystemResult systemResult;
