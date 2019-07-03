@@ -55,7 +55,9 @@
         var toggle = open ? closeSidebar : openSidebar;
         toggle();
     });
-
+    $("#print").on('click',function (event) {
+        window.print();
+    });
     /* TO DO LIST 
     --------------------*/
     $(".tdl-new").on('keypress', function (e) {
@@ -114,14 +116,6 @@
     $("#checkAll").change(function () {
         $("input:checkbox").prop('checked', $(this).prop("checked"));
     });
-
-
-    /*  Data Table
-    -------------*/
-
-    $('#bootstrap-data-table').DataTable();
-
-
 
 
 

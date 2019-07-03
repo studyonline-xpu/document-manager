@@ -18,6 +18,18 @@ public class Document implements Serializable {
 
     private String documentUrl;
 
+    //添加属性
+    private String userName;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    //结束
     private static final long serialVersionUID = 1L;
 
     public String getDocumentId() {
