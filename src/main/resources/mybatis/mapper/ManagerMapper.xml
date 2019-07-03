@@ -178,4 +178,8 @@
       password = #{password,jdbcType=VARCHAR}
     where manager_id = #{managerId,jdbcType=VARCHAR}
   </update>
+  <!--自己加的登陆方法-->
+  <select id="selectLogin" resultMap="BaseResultMap">
+    select * from manager where manager_id = #{managerId} and password = #{password};
+  </select>
 </mapper>
