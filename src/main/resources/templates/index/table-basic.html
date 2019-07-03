@@ -189,7 +189,7 @@
                     <div class="col-lg-8 p-0">
                         <div class="page-header">
                             <div class="page-title">
-                                <h1>Dashboard 1</h1>
+                                <h1>企业文档信息管理系统</h1>
                             </div>
                         </div>
                     </div><!-- /# column -->
@@ -226,7 +226,7 @@
 										</ul>
 									</div>
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body" id="card-body">
                                     <table class="table table-responsive">
                                         <thead>
                                             <tr>
@@ -235,6 +235,7 @@
                                                 <th>Class</th>
                                                 <th>Date</th>
                                                 <th>Enclosure</th>
+                                                <th>Print</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -244,6 +245,7 @@
                                                 <td><span class="badge badge-primary">Sale</span></td>
                                                 <td th:text="${document.updateTime}"></td>
                                                 <td class="color-primary"><a th:href='@{${document.documentUrl}}'>点击预览附件</a></td>
+                                                <td class="color-primary"><a id="print" href="#">打印</a></td>
                                             </tr>
                                         </tbody>
                                     </table>
