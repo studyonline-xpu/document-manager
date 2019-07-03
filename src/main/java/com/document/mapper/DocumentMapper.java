@@ -23,9 +23,6 @@ public interface DocumentMapper {
 
     Document selectByPrimaryKey(String documentId);
 
-    //自己添加的方法
-    List<Document> selectByLikeDocumentName(String documentName);
-
     int updateByExampleSelective(@Param("record") Document record, @Param("example") DocumentExample example);
 
     int updateByExampleWithBLOBs(@Param("record") Document record, @Param("example") DocumentExample example);
@@ -37,11 +34,19 @@ public interface DocumentMapper {
     int updateByPrimaryKeyWithBLOBs(Document record);
 
     int updateByPrimaryKey(Document record);
+    //自己添加的方法
 
+    /**
+     * 根据名称检索文档
+     * @param documentName
+     * @return
+     */
+    List<Document> selectByLikeDocumentName(String documentName);
     /**
      * 根据内容检索文档
      * @param document 内容片段
      * @return
      */
     List<Document> selectDocumentByDocument(String document);
+
 }

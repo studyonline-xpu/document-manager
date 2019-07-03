@@ -33,7 +33,7 @@ public class DocumentServiceImpl implements DocumentService {
     }
 
     /**
-     * 根据文档名称查询文档信息
+     * 根据文档名称模糊查询文档信息
      * @param documentName 文档实体
      * @return
      */

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * @author LM_Code
  * @create 2019-07-01-15:49
@@ -30,10 +32,11 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "login", method = RequestMethod.POST)
-    public String login(String userId, String password, Model model){
+    public String login(String userId, String password, Model model, HttpSession httpSession){
         User user = userService.login(userId, password);
         SystemResult result;
         if(user != null){
+            httpSession.setAttribute("user", user);
             return "redirect:/class/queryAllClass";
         }
         else{
