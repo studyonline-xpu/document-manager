@@ -32,4 +32,9 @@ public class pageController {
     public String table(){
         return "index/table-basic";
     }
+
+    @RequestMapping("/index/right")
+    public String right(){
+        return "index/right";
+    }
 }
