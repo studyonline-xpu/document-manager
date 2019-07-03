@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author LM_Code
@@ -44,5 +45,15 @@ public class UserServiceImpl implements UserService {
             return true;
         }
         return false;
+    }
+
+    /**
+     * 后台：查询所有用户
+     * @return
+     */
+    @Override
+    public List<User> selectAllUser() {
+        List<User> userList = userMapper.selectAllUser();
+        return userList;
     }
 }
