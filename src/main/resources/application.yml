@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     password: nanshen166013
-    url: jdbc:mysql://101.132.78.78:3306/information_document
+    url: jdbc:mysql://101.132.78.78:3306/information_document?characterEncoding=UTF-8
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource #指定数据源类型
 

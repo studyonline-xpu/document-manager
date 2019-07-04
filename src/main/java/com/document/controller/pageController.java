@@ -1,8 +1,10 @@
 package com.document.controller;
 
+import com.document.pojo.Class;
 import com.document.pojo.Department;
 import com.document.pojo.Role;
 import com.document.pojo.User;
+import com.document.service.ClassService;
 import com.document.service.DepartmentService;
 import com.document.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +53,8 @@ public class pageController {
     RoleService roleService;
     @Autowired
     DepartmentService departmentService;
+    @Autowired
+    ClassService classService;
 
     /**
      * 修改用户的角色以及部门名称
@@ -65,5 +69,17 @@ public class pageController {
         result.put("user", user);
         result.put("departments",departments);
         return "backstage/userUpdate";
+    }
+
+    /**
+     * 增加文档类别
+     * @return
+     */
+    @RequestMapping("/class/providerAdd")
+    public String addDocumentClass(Map result){
+        List<Class> classes = classService.queryAllClass();
+        result.put("classes", classes);
+        System.out.println(123);
+        return "backstage/providerAdd";
     }
 }
