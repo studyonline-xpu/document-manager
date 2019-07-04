@@ -27,4 +27,11 @@ public interface DepartmentMapper {
     int updateByPrimaryKeySelective(Department record);
 
     int updateByPrimaryKey(Department record);
+
+    //自己添加的方法
+    /**
+     * 查询所有的部门
+     * @return
+     */
+    List<Department> selectAllDepartment();
 }

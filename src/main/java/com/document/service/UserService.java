@@ -30,4 +30,18 @@ public interface UserService {
      * @return
      */
     public List<User> selectAllUser();
+
+    /**
+     *
+     * @param userId
+     * @return
+     */
+    boolean deleteUserByUserId(String userId);
+
+    /**
+     * 修改用户的角色和部门
+     *
+     * @return
+     */
+    boolean updateUserRoleAndDepartment(User user);
 }
