@@ -23,9 +23,12 @@ $(function () {
 
 //订单管理页面上点击删除按钮弹出删除框(billList.html)
 $(function () {
-    $('.removeBill').click(function () {
+    $('.removeBill').click(function (e) {
         $('.zhezhao').css('display', 'block');
         $('#removeBi').fadeIn();
+        var id = e.currentTarget.id;
+        console.log(id);
+        $('#yes').attr("href", "/document/deleteByDocumentId?documentId=" + id);
     });
 });
 
