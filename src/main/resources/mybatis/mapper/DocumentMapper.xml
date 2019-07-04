@@ -324,7 +324,7 @@
     order by document.update_time desc
   </select>
 <!--  查询所有文档-->
-  <select id="selectAllDocument">
+  <select id="selectAllDocument" resultMap="ResultMapWithBLOBs">
     select document.*, user.user_name
     from document, user
     where document.user_id = user.user_id
