@@ -10,6 +10,10 @@
         $(this).toggleClass("is-active");
     });
 
+    $("input[type='file']").change(function () {
+        document.fileForm.submit();
+        // $("#fileUrl").attr("value",)
+    });
   
     /*  
     -------------------
