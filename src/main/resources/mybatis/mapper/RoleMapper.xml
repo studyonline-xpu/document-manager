@@ -161,4 +161,8 @@
     set role_name = #{roleName,jdbcType=VARCHAR}
     where role_id = #{roleId,jdbcType=VARCHAR}
   </update>
+  <!--查询所有角色-->
+  <select id="selectAllRole" resultMap="BaseResultMap">
+    select * from role
+  </select>
 </mapper>

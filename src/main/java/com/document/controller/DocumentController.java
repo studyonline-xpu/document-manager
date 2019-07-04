@@ -113,7 +113,7 @@ public class DocumentController {
      * @param uploadFile
      * @return 返回url
      */
-    @Value("${IMAGE_SERVER_URL}")
+    @Value("101.132.78.78")
     String IMAGE_SERVER_URL;
     @RequestMapping("/upload")
     @ResponseBody
