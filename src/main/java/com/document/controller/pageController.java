@@ -53,6 +53,8 @@ public class pageController {
     RoleService roleService;
     @Autowired
     DepartmentService departmentService;
+    @Autowired
+    ClassService classService;
 
     /**
      * 修改用户的角色以及部门名称
@@ -69,9 +71,24 @@ public class pageController {
         return "backstage/userUpdate";
     }
 
-    @Autowired
-    ClassService classService;
-
+    /**
+     * 增加文档类别
+     * @return
+     */
+    @RequestMapping("/class/providerAdd")
+    public String addDocumentClass(Map result){
+        List<Class> classes = classService.queryAllClass();
+        result.put("classes", classes);
+        System.out.println(123);
+        return "backstage/providerAdd";
+    }
+    
+    /**
+     * 修改文档类别
+     * @param clazz
+     * @param result
+     * @return
+     */
     @RequestMapping("/updateClassId")
     public String goClassIdUpdate(Class clazz, Map result) {
         result.put("clazz", clazz);

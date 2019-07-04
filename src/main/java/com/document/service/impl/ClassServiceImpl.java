@@ -3,6 +3,7 @@ package com.document.service.impl;
 import com.document.mapper.ClassMapper;
 import com.document.pojo.Class;
 import com.document.service.ClassService;
+import com.document.util.IdUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -37,6 +38,10 @@ public class ClassServiceImpl implements ClassService {
      */
     @Override
     public boolean insertClass(Class clazz) {
+        clazz.setIsFather(false);
+        clazz.setClassId(IdUtil.next().substring(5, 9));
+        clazz.setSort(Integer.parseInt(clazz.getClassId()));
+        System.out.println(clazz.toString());
         int insert = classMapper.insert(clazz);
         if (insert > 0) {
             return true;

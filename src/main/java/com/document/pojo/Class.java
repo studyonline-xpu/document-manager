@@ -65,4 +65,16 @@ public class Class implements Serializable {
     public void setSort(Integer sort) {
         this.sort = sort;
     }
+
+    @Override
+    public String toString() {
+        return "Class{" +
+                "classId='" + classId + '\'' +
+                ", className='" + className + '\'' +
+                ", isFather=" + isFather +
+                ", fatherId='" + fatherId + '\'' +
+                ", sort=" + sort +
+                ", childClass=" + childClass +
+                '}';
+    }
 }
