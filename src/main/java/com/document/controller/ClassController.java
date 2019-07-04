@@ -43,4 +43,21 @@ public class ClassController {
             return "index/index";
         }
     }
+
+    /**
+     * 插入文档类别
+     * @param clazz
+     * @param result
+     * @return
+     */
+    @RequestMapping("/insertClass")
+    public String insertClass(Class clazz, Map result) {
+        boolean b = classService.insertClass(clazz);
+        if (b) {
+            result.put("msg", "插入类别成功");
+        } else {
+            result.put("msg", "插入类别失败");
+        }
+        return "";
+    }
 }

@@ -14,4 +14,11 @@ public interface ClassService {
      * @return
      */
     public List<Class> queryAllClass();
+
+    /**
+     * 插入文档类别
+     * @param clazz 类别实体
+     * @return
+     */
+    public boolean insertClass(Class clazz);
 }

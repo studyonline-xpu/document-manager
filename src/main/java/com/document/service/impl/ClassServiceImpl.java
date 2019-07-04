@@ -31,4 +31,17 @@ public class ClassServiceImpl implements ClassService {
         }
         return allFatherClass;
     }
+    /**
+     * 插入文档类别
+     * @param clazz 类别实体
+     * @return
+     */
+    @Override
+    public boolean insertClass(Class clazz) {
+        int insert = classMapper.insert(clazz);
+        if (insert > 0) {
+            return true;
+        }
+        return false;
+    }
 }
