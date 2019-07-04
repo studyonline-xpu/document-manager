@@ -99,6 +99,7 @@ public class pageController {
      */
     @RequestMapping("/updateClassId")
     public String goClassIdUpdate(Class clazz, Map result) {
+        System.out.println(1111111);
         result.put("clazz", clazz);
         return "backstage/classIdUpdate";
     }

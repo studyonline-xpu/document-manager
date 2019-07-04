@@ -4,9 +4,12 @@
 
 //供应商管理页面上点击删除按钮弹出删除框(providerList.html)
 $(function () {
-    $('.removeProvider').click(function () {
+    $('.removeProvider').click(function (e) {
         $('.zhezhao').css('display', 'block');
         $('#removeProv').fadeIn();
+        var id = e.currentTarget.id;
+        console.log(id);
+        $('#yes').attr("href", "/class/deleteClass?classId=" + id);
     });
 });
 
@@ -20,9 +23,12 @@ $(function () {
 
 //订单管理页面上点击删除按钮弹出删除框(billList.html)
 $(function () {
-    $('.removeBill').click(function () {
+    $('.removeBill').click(function (e) {
         $('.zhezhao').css('display', 'block');
         $('#removeBi').fadeIn();
+        var id = e.currentTarget.id;
+        console.log(id);
+        $('#yes').attr("href", "/document/deleteByDocumentId?documentId=" + id);
     });
 });
 
@@ -35,9 +41,12 @@ $(function () {
 
 //用户管理页面上点击删除按钮弹出删除框(userList.html)
 $(function () {
-    $('.removeUser').click(function () {
+    $('.removeUser').click(function (e) {
         $('.zhezhao').css('display', 'block');
         $('#removeUse').fadeIn();
+        var id = e.currentTarget.id;
+        console.log(id);
+        $('#yes').attr("href", "/user/deleteUserByUserId?userId=" + id);
     });
 });
 

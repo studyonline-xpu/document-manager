@@ -98,11 +98,21 @@ public class ClassController {
     @RequestMapping("/deleteClass")
     public String deleteClass(String classId, Map result) {
         boolean b = classService.deleteClass(classId);
+        System.out.println(classId);
         if (b) {
             result.put("msg", "删除文档类别成功");
         } else {
             result.put("msg", "删除文档类别失败");
         }
-        return "";
+        List<Class> classList = classService.queryAllClass();
+        SystemResult systemResult;
+        if(classList != null){
+            systemResult =  SystemResult.build(200, "类别获取成功");
+            systemResult.setData(classList);
+        }else {
+            systemResult = SystemResult.build(400, "类别获取失败");
+        }
+        result.put("classResult",classList);
+        return "backstage/providerList";
     }
 }

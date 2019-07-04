@@ -202,15 +202,17 @@ public class DocumentController {
      * @param documentId 文档id
      * @return
      */
-    @ResponseBody
+//    @ResponseBody
     @RequestMapping("/deleteByDocumentId")
-    public String deleteByDocumentId(String documentId){
-        Map map = new HashMap();
+    public String deleteByDocumentId(String documentId, Map map){
+        System.out.println(documentId);
         if(documentService.deleteByDocumentId(documentId)){
             map.put("msg", "文档删除成功");
         }else {
             map.put("msg", "文档删除失败");
         }
-        return JsonUtils.objectToJson(map);
+        List<Document> documents = documentService.selectAllDocument();
+        map.put("documents", documents);
+        return "backstage/documentList";
     }
 }

@@ -16,9 +16,9 @@ public class User implements Serializable {
 
     private String phone;
 
-    private String roleId;
+    private String roleId = "0";
 
-    private String departmentId;
+    private String departmentId = "0";
 
     private static final long serialVersionUID = 1L;
     //添加属性部门名称
