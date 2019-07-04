@@ -63,4 +63,11 @@ public interface DocumentService {
      * @return
      */
     List<Document> selectAllDocument();
+
+    /**
+     * 根据文档id删除文档
+     * @param documentId 文档id
+     * @return
+     */
+    boolean deleteByDocumentId(String documentId);
 }
