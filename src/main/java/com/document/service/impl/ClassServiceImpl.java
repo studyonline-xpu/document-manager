@@ -57,4 +57,18 @@ public class ClassServiceImpl implements ClassService {
         }
         return false;
     }
+
+    /**
+     * 删除文档类别
+     * @param classId 文档类别的id
+     * @return
+     */
+    @Override
+    public boolean deleteClass(String classId) {
+        int i = classMapper.deleteByPrimaryKey(classId);
+        if (i > 0) {
+            return true;
+        }
+        return false;
+    }
 }

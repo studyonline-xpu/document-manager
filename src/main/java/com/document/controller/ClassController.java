@@ -46,8 +46,8 @@ public class ClassController {
 
     /**
      * 插入文档类别
-     * @param clazz
-     * @param result
+     * @param clazz 文档类别实体
+     * @param result 存储返回的消息
      * @return
      */
     @RequestMapping("/insertClass")
@@ -63,8 +63,8 @@ public class ClassController {
 
     /**
      * 更新文档类别
-     * @param clazz
-     * @param result
+     * @param clazz 文档类别实体
+     * @param result 存储返回的消息
      * @return
      */
     @RequestMapping("/updateClass")
@@ -74,6 +74,23 @@ public class ClassController {
             result.put("msg", "更新文档类别成功");
         } else {
             result.put("msg","更新文档类别失败");
+        }
+        return "";
+    }
+
+    /**
+     * 删除文档类别
+     * @param classId 文档类别的id
+     * @param result 存储返回的消息
+     * @return
+     */
+    @RequestMapping("/deleteClass")
+    public String deleteClass(String classId, Map result) {
+        boolean b = classService.deleteClass(classId);
+        if (b) {
+            result.put("msg", "删除文档类别成功");
+        } else {
+            result.put("msg", "删除文档类别失败");
         }
         return "";
     }

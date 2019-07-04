@@ -28,4 +28,11 @@ public interface ClassService {
      * @return
      */
     public boolean updateClass(Class clazz);
+
+    /**
+     * 删除文档类别
+     * @param classId 文档类别的id
+     * @return
+     */
+    public boolean deleteClass(String classId);
 }
