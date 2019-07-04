@@ -44,7 +44,7 @@ public class UserController {
         SystemResult result;
         if(user != null){
             httpSession.setAttribute("user", user);
-            return "redirect:/class/queryAllClass";
+            return "redirect:/class/queryAllClass?flag=0";
         }
         else{
             model.addAttribute("msg", "账号或密码错误!");
@@ -108,6 +108,8 @@ public class UserController {
     @RequestMapping("/updateUserRoleAndDepartment")
     public String updateUserRoleAndDepartment(User user, Map result) {
         boolean b = userService.updateUserRoleAndDepartment(user);
+        List<User> users = userService.selectAllUser();
+        result.put("userList", users);
         if (b) {
             result.put("msg","更新成功");
         }else{

@@ -37,7 +37,7 @@
                     <th width="10%">文档编号</th>
                     <th width="20%">文档名称</th>
                     <th width="10%">上传者</th>
-                    <th width="15%">分类</th>
+                    <th width="15%">附件</th>
                     <th width="15%">更新时间</th>
                     <th width="30%">操作</th>
                 </tr>
@@ -45,11 +45,11 @@
                     <td th:text="${document.documentId}"></td>
                     <td th:text="${document.documentName}"></td>
                     <td th:text="${document.userName}"></td>
-                    <td th:text="${document.classId}"></td>
+                    <td><a th:href="${document.documentUrl}">预览附件</a></td>
                     <td th:text="${document.updateTime}"></td>
                     <td>
                         <a href="billView.html"><img src="../backstage/img/read.png" alt="查看" title="查看"/></a>
-                        <a href="billUpdate.html"><img src="../backstage/img/xiugai.png" alt="修改" title="修改"/></a>
+                        <!--<a href="billUpdate.html"><img src="../backstage/img/xiugai.png" alt="修改" title="修改"/></a>-->
                         <a href="#" class="removeBill"><img src="../backstage/img/schu.png" alt="删除" title="删除"/></a>
                     </td>
                 </tr>

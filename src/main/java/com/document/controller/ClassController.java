@@ -79,12 +79,14 @@ public class ClassController {
     @RequestMapping("/updateClass")
     public String updateClass(Class clazz, Map result) {
         boolean b = classService.updateClass(clazz);
+        List<Class> classList = classService.queryAllClass();
         if (b) {
             result.put("msg", "更新文档类别成功");
+            result.put("classResult", classList);
         } else {
             result.put("msg","更新文档类别失败");
         }
-        return "";
+        return "backstage/providerList";
     }
 
     /**
