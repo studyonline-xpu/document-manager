@@ -23,25 +23,13 @@
                 <span>文档管理页面</span>
             </div>
             <div class="search">
+                <form action="/document/queryByDocumentName" name="form">
                 <span>文档名称：</span>
-                <input type="text" placeholder="请输入商品的名称"/>
-                
-                <span>一级类别：</span>
-                <select name="tigong" >
-                    <option value="">--请选择--</option>
-                    <option value="">北京市粮油总公司</option>
-                    <option value="">邯郸市五得利面粉厂</option>
-                </select>
+                <input type="text" placeholder="请输入文档的名称" name="documentName"/>
 
-                <span>二级类别：</span>
-                <select name="fukuan">
-                    <option value="">--请选择--</option>
-                    <option value="">已付款</option>
-                    <option value="">未付款</option>
-                </select>
-
-                <input type="button" value="查询"/>
+                <input type="button" value="查询" style="cursor: pointer" onclick="document.form.submit()"/>
                 <a href="billAdd.html">添加文档</a>
+                </form>
             </div>
             <!--账单表格 样式和供应商公用-->
             <table class="providerTable" cellpadding="0" cellspacing="0">
@@ -85,9 +73,9 @@
     <footer class="footer">
     </footer>
 
-<script src="js/jquery.js"></script>
-<script src="js/js.js"></script>
-<script src="js/time.js"></script>
+<script src="../backstage/js/jquery.js"></script>
+<script src="../backstage/js/js.js"></script>
+<script src="../backstage/js/time.js"></script>
 
 </body>
 </html>

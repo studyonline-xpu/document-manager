@@ -75,16 +75,16 @@ public class DocumentController {
     @RequestMapping(value = "/queryByDocumentName")
     public String queryByLikeDocumentName(String documentName, Map map) {
         List<Document> documents = documentService.queryByLikeDocumentName(documentName);
+        System.out.println(documents);
         SystemResult systemResult;
         if (documents != null) {
             systemResult = SystemResult.build(200, "根据文档名称查询成功");
             systemResult.setData(documents);
             map.put("documents", documents);
-            map.put("systemResult",systemResult);
         } else {
             systemResult = SystemResult.build(400, "根据文档名称查询失败");
         }
-        return "index/table-basic";
+        return "backstage/documentList";
     }
 
     /**
