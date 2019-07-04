@@ -90,4 +90,16 @@ public class pageController {
         System.out.println(123);
         return "backstage/providerAdd";
     }
+
+    /**
+     * 修改文档类别
+     * @param clazz
+     * @param result
+     * @return
+     */
+    @RequestMapping("/updateClassId")
+    public String goClassIdUpdate(Class clazz, Map result) {
+        result.put("clazz", clazz);
+        return "backstage/classIdUpdate";
+    }
 }

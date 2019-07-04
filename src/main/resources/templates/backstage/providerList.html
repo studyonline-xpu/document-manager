@@ -43,7 +43,7 @@
                     <td th:text="${class.fatherId}">韩露</td>
                     <td>
                         <a href="providerView.html"><img src="../backstage/img/read.png" alt="查看" title="查看"/></a>
-                        <a href="providerUpdate.html"><img src="../backstage/img/xiugai.png" alt="修改" title="修改"/></a>
+                        <a th:href="@{'/updateClassId?classId='+${class.classId}+'&className='+${class.className}+'&fatherId='+${class.fatherId}}"><img src="../backstage/img/xiugai.png" alt="修改" title="修改"/></a>
                     </td>
                 </tr>
                 <tr th:each="classChild: ${class.childClass}">
@@ -52,7 +52,7 @@
                     <td th:text="${classChild.fatherId}">韩露</td>
                     <td>
                         <a href="providerView.html"><img src="../backstage/img/read.png" alt="查看" title="查看"/></a>
-                        <a href="providerUpdate.html"><img src="../backstage/img/xiugai.png" alt="修改" title="修改"/></a>
+                        <a th:href="@{'/updateClassId?classId='+${classChild.classId}+'&className='+${classChild.className}+'&fatherId='+${classChild.fatherId}}"><img src="../backstage/img/xiugai.png" alt="修改" title="修改"/></a>
                         <a href="#" class="removeProvider"><img src="../backstage/img/schu.png" alt="删除" title="删除"/></a>
                     </td>
                 </tr>
