@@ -196,4 +196,21 @@ public class DocumentController {
         }
         return systemResult;
     }
+
+    /**
+     * 根据文档id删除文档
+     * @param documentId 文档id
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/deleteByDocumentId")
+    public String deleteByDocumentId(String documentId){
+        Map map = new HashMap();
+        if(documentService.deleteByDocumentId(documentId)){
+            map.put("msg", "文档删除成功");
+        }else {
+            map.put("msg", "文档删除失败");
+        }
+        return JsonUtils.objectToJson(map);
+    }
 }
