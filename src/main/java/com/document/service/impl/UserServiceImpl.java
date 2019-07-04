@@ -58,6 +58,11 @@ public class UserServiceImpl implements UserService {
         return userList;
     }
 
+    /**
+     * 删除用户
+     * @param userId
+     * @return
+     */
     @Override
     public boolean deleteUserByUserId(String userId) {
         return userMapper.deleteByPrimaryKey(userId) > 0;

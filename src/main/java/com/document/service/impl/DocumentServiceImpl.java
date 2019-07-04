@@ -92,4 +92,9 @@ public class DocumentServiceImpl implements DocumentService {
     public List<Document> queryByDepartmentId(String departmentId) {
         return documentMapper.queryByDepartmentId(departmentId);
     }
+
+    @Override
+    public List<Document> selectAllDocument() {
+        return documentMapper.selectAllDocument;
+    }
 }

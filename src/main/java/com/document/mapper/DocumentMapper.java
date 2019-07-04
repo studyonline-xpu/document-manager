@@ -68,4 +68,10 @@ public interface DocumentMapper {
      * @return
      */
     List<Document> queryByDepartmentId(String departmentId);
+
+    /**
+     * 查询所有文档
+     * @return
+     */
+    List<Document> selectAllDocument();
 }
