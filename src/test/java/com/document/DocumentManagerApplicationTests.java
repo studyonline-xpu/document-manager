@@ -47,6 +47,12 @@ public class DocumentManagerApplicationTests {
         System.out.println(register);
     }
 
+    @Test
+    public void testSelectAllUser(){
+        List<User> users = userService.selectAllUser();
+        System.out.println(users);
+    }
+
     @Autowired
     public ClassService classService;
 
