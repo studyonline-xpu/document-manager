@@ -27,7 +27,7 @@ public class ClassController {
      */
 //    @ResponseBody
     @RequestMapping("/queryAllClass")
-    public String queryAllClass(Map<String,Object> map){
+    public String queryAllClass(Integer flag,Map<String,Object> map){
         List<Class> classList = classService.queryAllClass();
         SystemResult systemResult;
         if(classList != null){
@@ -37,6 +37,10 @@ public class ClassController {
             systemResult = SystemResult.build(400, "类别获取失败");
         }
         map.put("classResult",classList);
-        return "index/index";
+        if (flag == 1) {
+            return "backstage/providerList";
+        } else {
+            return "index/index";
+        }
     }
 }

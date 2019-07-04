@@ -3,6 +3,7 @@ package com.document.controller;
 import com.document.pojo.SystemResult;
 import com.document.pojo.User;
 import com.document.service.UserService;
+import com.document.util.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -62,6 +64,11 @@ public class UserController {
         return result;
     }
 
+    /**
+     * 查询所有用户
+     * @param map
+     * @return
+     */
     @RequestMapping("/selectAllUser")
     public String selectAllUser(Map map) {
         List<User> userList = userService.selectAllUser();
@@ -76,5 +83,22 @@ public class UserController {
         map.put("systemResult", systemResult);
         map.put("userList", userList);
         return "";
+    }
+
+    /**
+     * 根据id删除用户
+     * @param userId 用户id
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/deleteUserByUserId")
+    public String deleteUserByUserId(String userId){
+        Map result = new HashMap();
+        if(userService.deleteUserByUserId(userId)){
+            result.put("msg", "删除成功");
+        }else {
+            result.put("msg", "删除失败");
+        }
+        return JsonUtils.objectToJson(result);
     }
 }

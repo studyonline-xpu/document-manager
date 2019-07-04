@@ -56,4 +56,9 @@ public class UserServiceImpl implements UserService {
         List<User> userList = userMapper.selectAllUser();
         return userList;
     }
+
+    @Override
+    public boolean deleteUserByUserId(String userId) {
+        return userMapper.deleteByPrimaryKey(userId) > 0;
+    }
 }
