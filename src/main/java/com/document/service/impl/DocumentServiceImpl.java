@@ -101,4 +101,14 @@ public class DocumentServiceImpl implements DocumentService {
     public List<Document> selectAllDocument() {
         return documentMapper.selectAllDocument();
     }
+
+    /**
+     * 根据文档id删除文档
+     * @param documentId 文档id
+     * @return
+     */
+    @Override
+    public boolean deleteByDocumentId(String documentId) {
+        return documentMapper.deleteByPrimaryKey(documentId) > 0;
+    }
 }
