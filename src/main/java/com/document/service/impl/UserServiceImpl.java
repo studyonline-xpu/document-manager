@@ -68,8 +68,14 @@ public class UserServiceImpl implements UserService {
         return userMapper.deleteByPrimaryKey(userId) > 0;
     }
 
+    /**
+     * 更新用户
+     * @param user
+     * @return
+     */
     @Override
     public boolean updateUserRoleAndDepartment(User user) {
+        System.out.println(user);
         int i = userMapper.updateByPrimaryKeySelective(user);
         if (i > 0) {
             return true;

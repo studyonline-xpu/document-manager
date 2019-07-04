@@ -48,6 +48,14 @@ public class pageController {
         return "index/right";
     }
 
+    @RequestMapping("/documentForm")
+    public String form(Map map) {
+        List<Class> classes = classService.queryAllClass();
+        map.put("classResult",classes);
+        return "index/form-basic";
+    }
+
+
     //添加的注入
     @Autowired
     RoleService roleService;
