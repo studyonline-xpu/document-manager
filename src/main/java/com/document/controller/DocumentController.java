@@ -166,6 +166,8 @@ public class DocumentController {
      * @param document 文档
      * @return 放回json提示
      */
+    @RequestMapping("/updateDocument")
+    @ResponseBody
     public String updateDocument(Document document){
         document.setUpdateTime(new Date());
         Map result = new HashMap();
@@ -175,5 +177,23 @@ public class DocumentController {
             result.put("msg", "更新失败");
         }
         return JsonUtils.objectToJson(result);
+    }
+
+    /**
+     * 查询所有文档，根据时间排序
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/selectAllDocument")
+    public SystemResult selectAllDocument(){
+        List<Document> documents = documentService.selectAllDocument();
+        SystemResult systemResult;
+        if(documents != null){
+            systemResult = SystemResult.build(200, "根据文档内容查询成功");
+            systemResult.setData(documents);
+        }else {
+            systemResult = SystemResult.build(400, "根据文档内容查询失败");
+        }
+        return systemResult;
     }
 }
