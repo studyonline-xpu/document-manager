@@ -1,8 +1,10 @@
 package com.document.controller;
 
+import com.document.pojo.Class;
 import com.document.pojo.Department;
 import com.document.pojo.Role;
 import com.document.pojo.User;
+import com.document.service.ClassService;
 import com.document.service.DepartmentService;
 import com.document.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,5 +67,14 @@ public class pageController {
         result.put("user", user);
         result.put("departments",departments);
         return "backstage/userUpdate";
+    }
+
+    @Autowired
+    ClassService classService;
+
+    @RequestMapping("/updateClassId")
+    public String goClassIdUpdate(Class clazz, Map result) {
+        result.put("clazz", clazz);
+        return "backstage/classIdUpdate";
     }
 }
