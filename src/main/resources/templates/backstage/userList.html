@@ -45,7 +45,7 @@
                     <td>
                         <a href="userView.html"><img src="../backstage/img/read.png" alt="查看" title="查看"/></a>
                         <a th:href="@{'/user/update?userId='+${user.userId}+'&userName='+${user.userName}}"><img src="../backstage/img/xiugai.png" alt="修改" title="修改"/></a>
-                        <a href="#" class="removeUser"><img src="../backstage/img/schu.png" alt="删除" title="删除"/></a>
+                        <a href="#" class="removeUser" th:id="${user.userId}"><img src="../backstage/img/schu.png" alt="删除" title="删除"/></a>
                     </td>
                 </tr>
             </table>

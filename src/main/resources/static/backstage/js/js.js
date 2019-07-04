@@ -38,9 +38,12 @@ $(function () {
 
 //用户管理页面上点击删除按钮弹出删除框(userList.html)
 $(function () {
-    $('.removeUser').click(function () {
+    $('.removeUser').click(function (e) {
         $('.zhezhao').css('display', 'block');
         $('#removeUse').fadeIn();
+        var id = e.currentTarget.id;
+        console.log(id);
+        $('#yes').attr("href", "/user/deleteUserByUserId?userId=" + id);
     });
 });
 

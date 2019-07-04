@@ -90,19 +90,21 @@ public class UserController {
 
     /**
      * 根据id删除用户
+     *
      * @param userId 用户id
      * @return
      */
-    @ResponseBody
     @RequestMapping("/deleteUserByUserId")
-    public String deleteUserByUserId(String userId){
-        Map result = new HashMap();
-        if(userService.deleteUserByUserId(userId)){
+    public String deleteUserByUserId(String userId, Map result) {
+        List<User> userList = null;
+        if (userService.deleteUserByUserId(userId)) {
             result.put("msg", "删除成功");
-        }else {
+            userList = userService.selectAllUser();
+        } else {
             result.put("msg", "删除失败");
         }
-        return JsonUtils.objectToJson(result);
+        result.put("userList", userList);
+        return "backstage/userList";
     }
 
     @RequestMapping("/updateUserRoleAndDepartment")
