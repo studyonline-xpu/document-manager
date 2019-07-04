@@ -1,13 +1,8 @@
 package com.document;
 
+import com.document.pojo.*;
 import com.document.pojo.Class;
-import com.document.pojo.Document;
-import com.document.pojo.Role;
-import com.document.pojo.User;
-import com.document.service.ClassService;
-import com.document.service.DocumentService;
-import com.document.service.RoleService;
-import com.document.service.UserService;
+import com.document.service.*;
 import com.document.util.IdUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,6 +17,14 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DocumentManagerApplicationTests {
+    @Autowired
+    DepartmentService departmentService;
+
+    @Test
+    public void testSelectAllDepartment() {
+        List<Department> departments = departmentService.selectAllDepartment();
+        System.out.println(departments);
+    }
     @Autowired
     RoleService roleService;
 

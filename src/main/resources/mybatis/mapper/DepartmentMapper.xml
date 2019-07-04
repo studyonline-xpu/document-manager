@@ -161,4 +161,8 @@
     set department_name = #{departmentName,jdbcType=VARCHAR}
     where department_id = #{departmentId,jdbcType=VARCHAR}
   </update>
+  <!--查询所有部门-->
+  <select id="selectAllDepartment" resultMap="BaseResultMap">
+    select * from department
+  </select>
 </mapper>

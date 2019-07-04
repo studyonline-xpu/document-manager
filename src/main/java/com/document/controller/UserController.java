@@ -69,6 +69,7 @@ public class UserController {
         if (userList != null) {
             systemResult = SystemResult.build(200, "查询所有用户成功");
             systemResult.setData(userList);
+            return "";
         } else {
             systemResult = SystemResult.build(400, "查询所有用户失败");
         }
