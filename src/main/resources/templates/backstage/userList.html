@@ -2,19 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
     <meta charset="UTF-8">
-    <title>超市账单管理系统</title>
+    <title>企业文档管理后台</title>
     <link rel="stylesheet" href="../backstage/css/public.css"/>
     <link rel="stylesheet" href="../backstage/css/style.css"/>
 </head>
 <body>
 <!--头部-->
-    <header class="publicHeader">
-        <h1>超市账单管理系统</h1>
-        <div class="publicHeaderR">
-            <p><span>下午好！</span><span style="color: #fff21b"> Admin</span> , 欢迎你！</p>
-            <a href="login.html">退出</a>
-        </div>
-    </header>
+<div th:replace="/backstage/commons/bar::header"></div>
 <!--时间-->
     <section class="publicTime">
         <span id="time">2015年1月1日 11:11  星期一</span>
@@ -38,33 +32,22 @@
             <table class="providerTable" cellpadding="0" cellspacing="0">
                 <tr class="firstTr">
                     <th width="10%">用户编码</th>
-                    <th width="20%">用户名称</th>
-                    <th width="10%">性别</th>
-                    <th width="10%">年龄</th>
+                    <th width="10%">用户名称</th>
+                    <th width="15%">创建日期</th>
+                    <th width="15%">邮箱</th>
                     <th width="10%">电话</th>
-                    <th width="10%">用户类型</th>
-                    <th width="30%">操作</th>
+                    <th width="10%">角色</th>
+                    <th width="10%">部门</th>
+                    <th width="20%">操作</th>
                 </tr>
-                <tr>
-                    <td>hanlu</td>
-                    <td>韩露</td>
-                    <td>女</td>
-                    <td>20</td>
-                    <td>15918230478</td>
-                    <td>经理</td>
-                    <td>
-                        <a href="userView.html"><img src="../backstage/img/read.png" alt="查看" title="查看"/></a>
-                        <a href="userUpdate.html"><img src="../backstage/img/xiugai.png" alt="修改" title="修改"/></a>
-                        <a href="#" class="removeUser"><img src="../backstage/img/schu.png" alt="删除" title="删除"/></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>PRO-CODE—001</td>
-                    <td>测试供应商001</td>
-                    <td>韩露</td>
-                    <td>15918230478</td>
-                    <td>15918230478</td>
-                    <td>2015-11-12</td>
+                <tr th:each="user: ${userList}">
+                    <td th:text="${user.userId}"></td>
+                    <td th:text="${user.userName}"></td>
+                    <td th:text="${user.createTime}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.phone}"></td>
+                    <td th:text="${user.roleName}"></td>
+                    <td th:text="${user.departmentName}"></td>
                     <td>
                         <a href="userView.html"><img src="../backstage/img/read.png" alt="查看" title="查看"/></a>
                         <a href="userUpdate.html"><img src="../backstage/img/xiugai.png" alt="修改" title="修改"/></a>
