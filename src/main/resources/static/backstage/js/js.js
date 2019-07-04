@@ -4,9 +4,12 @@
 
 //供应商管理页面上点击删除按钮弹出删除框(providerList.html)
 $(function () {
-    $('.removeProvider').click(function () {
+    $('.removeProvider').click(function (e) {
         $('.zhezhao').css('display', 'block');
         $('#removeProv').fadeIn();
+        var id = e.currentTarget.id;
+        console.log(id);
+        $('#yes').attr("href", "/class/deleteClass?classId=" + id);
     });
 });
 
