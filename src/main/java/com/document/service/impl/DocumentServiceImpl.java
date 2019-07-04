@@ -48,7 +48,7 @@ public class DocumentServiceImpl implements DocumentService {
      */
     @Override
     public boolean addDocument(Document document) {
-        return false;
+        return documentMapper.insert(document) > 0;
     }
 
     /**
@@ -58,7 +58,7 @@ public class DocumentServiceImpl implements DocumentService {
      */
     @Override
     public boolean updateDocument(Document document) {
-        return false;
+        return documentMapper.updateByPrimaryKeyWithBLOBs(document) > 0;
     }
 
     /**

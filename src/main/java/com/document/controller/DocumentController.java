@@ -6,12 +6,18 @@ import com.document.pojo.SystemResult;
 import com.document.pojo.User;
 import com.document.service.ClassService;
 import com.document.service.DocumentService;
+import com.document.util.FastDFSClient;
+import com.document.util.IdUtil;
+import com.document.util.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -100,5 +106,74 @@ public class DocumentController {
             systemResult = SystemResult.build(400, "根据文档内容查询失败");
         }
         return "/index/table-basic";
+    }
+
+    /**
+     * 上传文档附件
+     * @param uploadFile
+     * @return 返回url
+     */
+    @Value("${IMAGE_SERVER_URL}")
+    String IMAGE_SERVER_URL;
+    @RequestMapping("/upload")
+    @ResponseBody
+    public String upLoadFile(MultipartFile uploadFile){
+        try{
+            //创建fastDFS的客户端
+            FastDFSClient fastDFSClient = new FastDFSClient("classpath:conf/client.conf");
+            //取文件扩展名
+            String originalFilename = uploadFile.getOriginalFilename();
+            String extName = originalFilename.substring(originalFilename.indexOf(".") + 1);
+            //上传文件，并得到图片的地址和文件名
+            String url = fastDFSClient.uploadFile(uploadFile.getBytes(), extName);
+            //补充url
+            url = IMAGE_SERVER_URL + url;
+            //封装到对象里
+            Map result = new HashMap();
+            result.put("error", 0);
+            result.put("url", url);
+            return JsonUtils.objectToJson(result);
+        }catch (Exception e){
+            e.printStackTrace();
+            Map result = new HashMap();
+            result.put("error", 1);
+            result.put("url", "图片上传失败");
+            return JsonUtils.objectToJson(result);
+        }
+    }
+
+    /**
+     * 添加文档记录
+     * @param document 文档
+     * @return 返回json 提示
+     */
+    @RequestMapping("/insertDocument")
+    @ResponseBody
+    public String insertDocument(Document document){
+        document.setDocumentId(IdUtil.next());
+        document.setUpdateTime(new Date());
+        Map result = new HashMap();
+        if(documentService.addDocument(document)) {
+            result.put("msg", "上传成功");
+        }else {
+            result.put("msg", "上传失败");
+        }
+        return JsonUtils.objectToJson(result);
+    }
+
+    /**
+     * 更新文档
+     * @param document 文档
+     * @return 放回json提示
+     */
+    public String updateDocument(Document document){
+        document.setUpdateTime(new Date());
+        Map result = new HashMap();
+        if(documentService.updateDocument(document)) {
+            result.put("msg", "更新成功");
+        }else {
+            result.put("msg", "更新失败");
+        }
+        return JsonUtils.objectToJson(result);
     }
 }
