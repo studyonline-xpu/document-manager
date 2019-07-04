@@ -58,7 +58,7 @@ public class ClassController {
         } else {
             result.put("msg", "插入文档类别失败");
         }
-        return "";
+        return "class/queryAllClass?flag=1";
     }
 
     /**
