@@ -58,7 +58,16 @@ public class ClassController {
         } else {
             result.put("msg", "插入文档类别失败");
         }
-        return "class/queryAllClass?flag=1";
+        List<Class> classList = classService.queryAllClass();
+        SystemResult systemResult;
+        if(classList != null){
+            systemResult =  SystemResult.build(200, "类别获取成功");
+            systemResult.setData(classList);
+        }else {
+            systemResult = SystemResult.build(400, "类别获取失败");
+        }
+        result.put("classResult",classList);
+        return "backstage/providerList";
     }
 
     /**
