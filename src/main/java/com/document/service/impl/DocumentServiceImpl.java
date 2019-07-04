@@ -48,7 +48,7 @@ public class DocumentServiceImpl implements DocumentService {
      */
     @Override
     public boolean addDocument(Document document) {
-        return false;
+        return documentMapper.insert(document) > 0;
     }
 
     /**
@@ -58,7 +58,7 @@ public class DocumentServiceImpl implements DocumentService {
      */
     @Override
     public boolean updateDocument(Document document) {
-        return false;
+        return documentMapper.updateByPrimaryKeyWithBLOBs(document) > 0;
     }
 
     /**
@@ -71,5 +71,25 @@ public class DocumentServiceImpl implements DocumentService {
         document = "%" + document + "%";
         List<Document> documents = documentMapper.selectDocumentByDocument(document);
         return documents;
+    }
+
+    /**
+     * 根据userId查看个人履历
+     * @param userId
+     * @return
+     */
+    @Override
+    public List<Document> queryByUserId(String userId) {
+        return documentMapper.queryByUserId(userId);
+    }
+
+    /**
+     * 部门经理查看部门简历
+     * @param departmentId 部门id
+     * @return
+     */
+    @Override
+    public List<Document> queryByDepartmentId(String departmentId) {
+        return documentMapper.queryByDepartmentId(departmentId);
     }
 }

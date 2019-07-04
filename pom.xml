@@ -69,7 +69,12 @@
             <artifactId>snowflake</artifactId>
             <version>1.1</version>
         </dependency>
-
+        <!--分布式文件服务器所需要的包-->
+        <dependency>
+            <groupId>fastdfs_client</groupId>
+            <artifactId>fastdfs_client</artifactId>
+            <version>1.25</version>
+        </dependency>
     </dependencies>
 
     <build>

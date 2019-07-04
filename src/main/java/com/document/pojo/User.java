@@ -21,7 +21,28 @@ public class User implements Serializable {
     private String departmentId;
 
     private static final long serialVersionUID = 1L;
+    //添加属性部门名称
+    private String departmentName;
 
+    //添加属性角色名称
+    private String roleName;
+
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+    //结束
     public String getUserId() {
         return userId;
     }

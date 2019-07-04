@@ -3,6 +3,8 @@ package com.document.mapper;
 import com.document.pojo.Role;
 import com.document.pojo.RoleExample;
 import java.util.List;
+
+import com.document.pojo.User;
 import org.apache.ibatis.annotations.Param;
 
 public interface RoleMapper {
@@ -27,4 +29,12 @@ public interface RoleMapper {
     int updateByPrimaryKeySelective(Role record);
 
     int updateByPrimaryKey(Role record);
+
+    //自己添加的方法
+
+    /**
+     * 查询所有角色
+     * @return
+     */
+    List<Role> selectAllRole();
 }

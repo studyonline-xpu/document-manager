@@ -10,6 +10,9 @@
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="role_id" jdbcType="VARCHAR" property="roleId" />
     <result column="department_id" jdbcType="VARCHAR" property="departmentId" />
+    <!--添加的属性-->
+    <result column="department_name" jdbcType="VARCHAR" property="departmentName" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName"/>
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -263,6 +266,8 @@
   <!--自己加的方法-->
   <!--后台：查询所有用户-->
   <select id="selectAllUser" resultMap="BaseResultMap">
-    select * from user
+    select user.*,department.department_name,role.role_name from user,department,role
+    where user.role_id = role.role_id
+    and user.department_id = department.department_id
   </select>
 </mapper>

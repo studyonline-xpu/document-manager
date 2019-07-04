@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 /**
@@ -26,9 +27,10 @@ public class ManagerController {
      * @return
      */
     @RequestMapping("/login")
-    public String login(String managerId, String password, Map map) {
-        Manager manager = managerService.selectLogin(managerId, password);
-        if (manager != null) {
+    public String login(String managerId, String password, Map map, HttpSession httpSession) {
+        Manager user = managerService.selectLogin(managerId, password);
+        if (user != null) {
+            httpSession.setAttribute("user", user);
             return "redirect:/backstage-index";
         }else{
             map.put("msg","用户名或密码错误");

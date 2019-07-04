@@ -305,4 +305,22 @@
     and document.user_id = user.user_id
     order by document.update_time desc
   </select>
+<!--  根据userId查看个人履历-->
+  <select id="queryByUserId" resultMap="ResultMapWithBLOBs">
+    select document.*, user.user_name
+    from document, user
+    where document.class_id = '32'
+    and document.user_id = #{userId}
+    and document.user_id = user.user_id
+    order by document.update_time desc
+  </select>
+<!--  部门经理查看部门简历-->
+  <select id="queryByDepartmentId" resultMap="ResultMapWithBLOBs">
+    select document.*, user.user_name
+    from document, user
+    where document.class_id = '32'
+    and document.user_id = user.user_id
+    and user.department_id = #{departmentId}
+    order by document.update_time desc
+  </select>
 </mapper>

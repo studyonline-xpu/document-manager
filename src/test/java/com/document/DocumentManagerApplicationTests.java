@@ -2,9 +2,11 @@ package com.document;
 
 import com.document.pojo.Class;
 import com.document.pojo.Document;
+import com.document.pojo.Role;
 import com.document.pojo.User;
 import com.document.service.ClassService;
 import com.document.service.DocumentService;
+import com.document.service.RoleService;
 import com.document.service.UserService;
 import com.document.util.IdUtil;
 import org.junit.Test;
@@ -20,6 +22,15 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DocumentManagerApplicationTests {
+    @Autowired
+    RoleService roleService;
+
+    @Test
+    public void testSelectAllRole() {
+        List<Role> roles = roleService.selectAllRole();
+        System.out.println(roles);
+    }
+
     @Test
     public void testCreateTime() {
         Calendar instance = Calendar.getInstance();
@@ -45,6 +56,12 @@ public class DocumentManagerApplicationTests {
         user.setUserName("hhh");
         boolean register = userService.register(user);
         System.out.println(register);
+    }
+
+    @Test
+    public void testSelectAllUser() {
+        List<User> users = userService.selectAllUser();
+        System.out.println(users);
     }
 
     @Autowired
