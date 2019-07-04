@@ -30,4 +30,11 @@ public interface UserService {
      * @return
      */
     public List<User> selectAllUser();
+
+    /**
+     *
+     * @param userId
+     * @return
+     */
+    boolean deleteUserByUserId(String userId);
 }
