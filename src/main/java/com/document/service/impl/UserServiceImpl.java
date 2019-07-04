@@ -2,6 +2,7 @@ package com.document.service.impl;
 
 import com.document.mapper.UserMapper;
 import com.document.pojo.User;
+import com.document.pojo.UserExample;
 import com.document.service.UserService;
 import com.document.util.IdUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,4 +62,14 @@ public class UserServiceImpl implements UserService {
     public boolean deleteUserByUserId(String userId) {
         return userMapper.deleteByPrimaryKey(userId) > 0;
     }
+
+    @Override
+    public boolean updateUserRoleAndDepartment(User user) {
+        int i = userMapper.updateByPrimaryKeySelective(user);
+        if (i > 0) {
+            return true;
+        }
+        return false;
+    }
+
 }

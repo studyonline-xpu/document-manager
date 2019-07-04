@@ -1,9 +1,16 @@
 package com.document.controller;
 
+import com.document.pojo.Department;
+import com.document.pojo.Role;
+import com.document.service.DepartmentService;
+import com.document.service.RoleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author LM_Code
@@ -36,5 +43,25 @@ public class pageController {
     @RequestMapping("/index/right")
     public String right(){
         return "index/right";
+    }
+
+    //添加的注入
+    @Autowired
+    RoleService roleService;
+    @Autowired
+    DepartmentService departmentService;
+
+    /**
+     * 修改用户的角色以及部门名称
+     * @param result
+     * @return
+     */
+    @RequestMapping("/user/update")
+    public String goUpdateUserRoleAndDepartment(Map result) {
+        List<Role> roles = roleService.selectAllRole();
+        List<Department> departments = departmentService.selectAllDepartment();
+        result.put("roles",roles);
+        result.put("departments",departments);
+        return "backstage/userUpdate";
     }
 }

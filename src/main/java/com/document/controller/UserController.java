@@ -1,7 +1,11 @@
 package com.document.controller;
 
+import com.document.pojo.Department;
+import com.document.pojo.Role;
 import com.document.pojo.SystemResult;
 import com.document.pojo.User;
+import com.document.service.DepartmentService;
+import com.document.service.RoleService;
 import com.document.service.UserService;
 import com.document.util.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,5 +104,17 @@ public class UserController {
             result.put("msg", "删除失败");
         }
         return JsonUtils.objectToJson(result);
+    }
+
+    @ResponseBody
+    @RequestMapping("/updateUserRoleAndDepartment")
+    public String updateUserRoleAndDepartment(User user, Map result) {
+        boolean b = userService.updateUserRoleAndDepartment(user);
+        if (b) {
+            result.put("msg","更新成功");
+        }else{
+            result.put("msg","更新失败");
+        }
+        return "backstage/userList";
     }
 }

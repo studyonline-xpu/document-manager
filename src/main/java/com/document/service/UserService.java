@@ -37,4 +37,11 @@ public interface UserService {
      * @return
      */
     boolean deleteUserByUserId(String userId);
+
+    /**
+     * 修改用户的角色和部门
+     *
+     * @return
+     */
+    boolean updateUserRoleAndDepartment(User user);
 }
