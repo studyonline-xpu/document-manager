@@ -1,13 +1,9 @@
-/**
- * Created by yaling.he on 2015/11/18.
- */
 //时间
 function fn(){
     var time = new Date();
     var str= "";
     var div = document.getElementById("time");
 	var hour = document.getElementById("hours");
-//    console.log(time);
     var year = time.getFullYear();
     var mon = time.getMonth()+1;
     var day = time.getDate();

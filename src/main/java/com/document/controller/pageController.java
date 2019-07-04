@@ -2,6 +2,7 @@ package com.document.controller;
 
 import com.document.pojo.Department;
 import com.document.pojo.Role;
+import com.document.pojo.User;
 import com.document.service.DepartmentService;
 import com.document.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,10 +58,11 @@ public class pageController {
      * @return
      */
     @RequestMapping("/user/update")
-    public String goUpdateUserRoleAndDepartment(Map result) {
+    public String goUpdateUserRoleAndDepartment(User user, Map result) {
         List<Role> roles = roleService.selectAllRole();
         List<Department> departments = departmentService.selectAllDepartment();
         result.put("roles",roles);
+        result.put("user", user);
         result.put("departments",departments);
         return "backstage/userUpdate";
     }
