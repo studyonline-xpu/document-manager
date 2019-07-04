@@ -20,50 +20,37 @@
     <div class="right">
         <div class="location">
             <strong>你现在所在的位置是:</strong>
-            <span>用户管理页面 >> 用户修改页面</span>
+            <span>用户管理页面 >> 用户权限修改页面</span>
         </div>
         <div class="providerAdd">
-            <form action="#">
+            <form th:action="@{'/user/updateUserRoleAndDepartment?userId='}" name="form">
                 <!--div的class 为error是验证错误，ok是验证成功-->
                 <div>
-                    <label for="userName">用户名称：</label>
-                    <input type="text" name="userName" id="userName" placeholder="韩露"/>
+                    <label for="userId">用户编号：</label>
+                    <input type="text" name="userId" id="userId" th:value="${user.userId}" readonly/>
                     <span >*</span>
                 </div>
-
                 <div>
-                    <label >用户性别：</label>
+                    <label for="username">用户昵称：</label>
+                    <input type="text" name="username" id="username" th:value="${user.userName}" disabled/>
+                    <span >*</span>
+                </div>
+                <div>
+                    <label >用户部门：</label>
 
-                    <select name="">
-                        <option value="man">男</option>
-                        <option value="woman" selected>女</option>
+                    <select name="department">
+                        <option th:value="${department.departmentId}" th:each="department: ${departments}" th:text="${department.departmentName}">男</option>
                     </select>
                 </div>
                 <div>
-                    <label for="data">出生日期：</label>
-                    <input type="text" name="data" id="data" placeholder="2016年2月1日"/>
-                    <span >*</span>
-                </div>
-                <div>
-                    <label for="userphone">用户电话：</label>
-                    <input type="text" name="userphone" id="userphone" placeholder="13533667897"/>
-                    <span >*</span>
-                </div>
-                <div>
-                    <label for="userAddress">用户地址：</label>
-                    <input type="text" name="userAddress" id="userAddress" placeholder="北京"/>
-                </div>
-                <div>
-                    <label >用户类别：</label>
-                    <input type="radio" name="userlei"/>管理员
-                    <input type="radio" name="userlei" checked/>经理
-                    <input type="radio" name="userlei"/>普通用户
+                    <label >用户角色：</label>
+                    <input type="radio" name="roleId" checked value="3"/>部门员工
+                    <input type="radio" name="roleId" value="2"/>部门经理
+                    <input type="radio" name="roleId" value="1"/>总经理
 
                 </div>
                 <div class="providerAddBtn">
-                    <!--<a href="#">保存</a>-->
-                    <!--<a href="userList.html">返回</a>-->
-                    <input type="button" value="保存" onclick="history.back(-1)"/>
+                    <input type="button" value="保存" onclick="document.form.submit()"/>
                     <input type="button" value="返回" onclick="history.back(-1)"/>
                 </div>
             </form>

@@ -95,6 +95,6 @@ public class DocumentServiceImpl implements DocumentService {
 
     @Override
     public List<Document> selectAllDocument() {
-        return documentMapper.selectAllDocument;
+        return documentMapper.selectAllDocument();
     }
 }
