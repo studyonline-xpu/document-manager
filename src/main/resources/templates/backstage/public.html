@@ -2,18 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
     <meta charset="UTF-8">
-    <title>超市账单管理系统</title>
+    <title>企业文档管理后台</title>
     <link rel="stylesheet" href="../backstage/css/public.css"/>
 </head>
 <body>
 <!--头部-->
-    <header class="publicHeader">
-        <h1>超市账单管理系统</h1>
-        <div class="publicHeaderR">
-            <p><span>下午好！</span><span style="color: #fff21b"> Admin</span> , 欢迎你！</p>
-            <a href="login.html">退出</a>
-        </div>
-    </header>
+<div th:replace="/backstage/commons/bar::header"></div>
 <!--时间-->
     <section class="publicTime">
         <span id="time">2015年1月1日 11:11  星期一</span>

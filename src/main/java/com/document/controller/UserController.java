@@ -74,6 +74,6 @@ public class UserController {
         }
         map.put("systemResult", systemResult);
         map.put("userList", userList);
-        return "";
+        return "backstage/userList";
     }
 }
