@@ -93,8 +93,12 @@ public class DocumentServiceImpl implements DocumentService {
         return documentMapper.queryByDepartmentId(departmentId);
     }
 
+    /**
+     * 查询所有文档
+     * @return
+     */
     @Override
     public List<Document> selectAllDocument() {
-        return documentMapper.selectAllDocument;
+        return documentMapper.selectAllDocument();
     }
 }

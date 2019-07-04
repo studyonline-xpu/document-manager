@@ -5,7 +5,6 @@ import com.document.pojo.Class;
 import com.document.service.ClassService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 /**
@@ -40,6 +39,20 @@ public class ClassServiceImpl implements ClassService {
     public boolean insertClass(Class clazz) {
         int insert = classMapper.insert(clazz);
         if (insert > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 更新文档类别
+     * @param clazz 文档类别实体
+     * @return
+     */
+    @Override
+    public boolean updateClass(Class clazz) {
+        int i = classMapper.updateByPrimaryKeySelective(clazz);
+        if (i > 0) {
             return true;
         }
         return false;

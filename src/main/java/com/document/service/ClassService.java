@@ -21,4 +21,11 @@ public interface ClassService {
      * @return
      */
     public boolean insertClass(Class clazz);
+
+    /**
+     * 更新文档类别
+     * @param clazz 文档类别实体
+     * @return
+     */
+    public boolean updateClass(Class clazz);
 }

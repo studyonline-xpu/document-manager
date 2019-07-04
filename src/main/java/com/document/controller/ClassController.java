@@ -54,9 +54,26 @@ public class ClassController {
     public String insertClass(Class clazz, Map result) {
         boolean b = classService.insertClass(clazz);
         if (b) {
-            result.put("msg", "插入类别成功");
+            result.put("msg", "插入文档类别成功");
         } else {
-            result.put("msg", "插入类别失败");
+            result.put("msg", "插入文档类别失败");
+        }
+        return "";
+    }
+
+    /**
+     * 更新文档类别
+     * @param clazz
+     * @param result
+     * @return
+     */
+    @RequestMapping("/updateClass")
+    public String updateClass(Class clazz, Map result) {
+        boolean b = classService.updateClass(clazz);
+        if (b) {
+            result.put("msg", "更新文档类别成功");
+        } else {
+            result.put("msg","更新文档类别失败");
         }
         return "";
     }
