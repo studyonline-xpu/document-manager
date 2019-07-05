@@ -1,12 +1,12 @@
-    <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+ <!DOCTYPE html>
+ <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>SimDash : Table</title>
+    <title>SimDash : Basic Form </title>
 	
 	<!-- ================= Favicon ================== -->
     <!-- Standard -->
@@ -32,28 +32,10 @@
 
 <body>
 
-<div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures" th:fragment="leftSide">
-    <div class="nano">
-        <div class="nano-content">
-            <ul>
-                <li class="label">个人</li>
-                <li class="active"><a href="index.html"><i class="ti-home"></i> 主页 </a></li>
-                <li><a href="app-profile.html"><i class="ti-user"></i> 上传附件 </a></li>
-                <li class="label">分类信息</li>
-            </ul>
-            <ul th:each="classP: ${classes}">
-                <li><a class="sidebar-sub-toggle"><i class="ti-layout"></i> <span th:text="${classP.className}">UI Elements</span> <span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                    <ul th:each="class: ${classP.childClass}">
-                        <li><a th:href="@{'/document/queryByClassId?classId='+${class.classId}}" th:text="${class.className}">Accordion</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
-    <!-- /# sidebar -->
-
+<div th:replace="/index/commons/bar::leftSide"></div>
+<!-- /# sidebar -->
     <div th:replace="/index/commons/bar::head"></div>
+
 	<div class="chat-sidebar">
         <!-- BEGIN chat -->
         <div id="mmc-chat" class="color-default">
@@ -111,7 +93,7 @@
                             <li class="user-tooltip" data-id="1" data-status="online" data-username="Rufat Askerov" data-position="left" data-filter-item data-filter-name="rufat askerov">
                                 <!-- BEGIN USER IMAGE-->
                                 <div class="user-image">
-                                    <img src="../index/images/avatar/1.jpg" class="avatar" alt="Rufat Askerov" />
+                                    <img src="../index//images/avatar/1.jpg" class="avatar" alt="Rufat Askerov" />
                                 </div>
                                 <!-- END USER IMAGE-->
                                 <!-- BEGIN USERNAME-->
@@ -123,7 +105,7 @@
                             <!-- BEGIN USER-->
                             <li class="user-tooltip" data-id="3" data-status="online" data-username="Alice" data-position="left" data-filter-item data-filter-name="alice">
                                 <div class="user-image">
-                                    <img src="../index/images/avatar/1.jpg" class="avatar" alt="Alice" />
+                                    <img src="../index//images/avatar/1.jpg" class="avatar" alt="Alice" />
                                 </div>
                                 <span class="user-name">Alice</span>
 								<span class="user-show"></span>
@@ -132,7 +114,7 @@
                             <!-- BEGIN USER-->
                             <li class="user-tooltip" data-id="7" data-status="offline" data-username="Michael Scofield" data-position="left" data-filter-item data-filter-name="michael scofield">
                                 <div class="user-image">
-                                    <img src="../index/images/avatar/1.jpg" class="avatar" alt="Michael Scofield" />
+                                    <img src="../index//images/avatar/1.jpg" class="avatar" alt="Michael Scofield" />
                                 </div>
                                 <span class="user-name">Michael Scofield</span>
 								<span class="user-show"></span>
@@ -150,7 +132,7 @@
                             <!-- BEGIN USER-->
                             <li class="user-tooltip" data-id="6" data-status="offline" data-username="Sara Tancredi" data-position="left" data-filter-item data-filter-name="sara tancredi">
                                 <div class="user-image">
-                                    <img src="../index/images/avatar/1.jpg" class="avatar" alt="Sara Tancredi" />
+                                    <img src="../index//images/avatar/1.jpg" class="avatar" alt="Sara Tancredi" />
                                 </div>
                                 <span class="user-name">Sara Tancredi</span>
 								<span class="user-show"></span>
@@ -159,7 +141,7 @@
                             <!-- BEGIN USER-->
                             <li class="user-tooltip" data-id="7" data-status="offline" data-username="Wolf" data-position="left" data-filter-item data-filter-name="Wolf">
                                 <div class="user-image">
-                                    <img src="../index/images/avatar/1.jpg" class="avatar" alt="Wolf" />
+                                    <img src="../index//images/avatar/1.jpg" class="avatar" alt="Wolf" />
                                 </div>
                                 <span class="user-name">Wolf</span>
 								<span class="user-show"></span>
@@ -192,69 +174,74 @@
                                 <h1>企业文档管理系统</h1>
                             </div>
                         </div>
-                    </div><!-- /# column -->
+                    </div>
                     <div class="col-lg-4 p-0">
                         <div class="page-header">
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
-                                    <li><a href="#">Dashboard</a></li>
-                                    <li><a href="#">Table</a></li>
-                                    <li class="active">Responsive Table</li>
+                                    <li><a href="#">企业文档管理系统</a></li>
+                                    <li class="active">Basic Form</li>
                                 </ol>
                             </div>
                         </div>
-                    </div><!-- /# column -->
-                </div><!-- /# row -->
+                    </div>
+                </div>
                 <div class="main-content">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="card alert" style="width: 1120px;">
+                    <!-- /# row -->
+					<!-- /# row -->
+					<!-- /# row -->
+					<div class="row">
+                        <div class="col-lg-12">
+                            <div class="card alert">
                                 <div class="card-header">
-                                    <h4>Table Basic </h4>
-									<div class="card-header-right-icon">
-										<ul>
-											<li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
-											<li class="card-option drop-menu"><i class="ti-settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="link"></i>
-												<ul class="card-option-dropdown dropdown-menu">
-													<li><a href="#"><i class="ti-loop"></i> Update data</a></li>
-													<li><a href="#"><i class="ti-menu-alt"></i> Detail log</a></li>
-													<li><a href="#"><i class="ti-pulse"></i> Statistics</a></li>
-													<li><a href="#"><i class="ti-power-off"></i> Clear ist</a></li>
-												</ul>
-											</li>
-											<li class="doc-link"><a href="#"><i class="ti-link"></i></a></li>
-										</ul>
-									</div>
+                                    <h4>上传文档</h4>
+                                    <div class="card-header-right-icon">
+                                        <ul>
+                                            <li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
+                                            <li class="doc-link"><a href="#"><i class="ti-link"></i></a></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="card-body" id="card-body">
-                                    <table class="table table-responsive">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Name</th>
-                                                <th>Owner</th>
-                                                <th>Date</th>
-                                                <th>Enclosure</th>
-                                                <th>Watch</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr th:each="document: ${result}">
-                                                <th scope="row" th:text="${document.documentId}"></th>
-                                                <td th:text="${document.documentName}"> </td>
-                                                <td><span class="badge badge-primary" th:text="${document.userName}">Sale</span></td>
-                                                <td th:text="${document.updateTime}"></td>
-                                                <td class="color-primary"><a th:href='@{${document.documentUrl}}'>点击预览附件</a></td>
-                                                <td class="color-primary"><a href="#">查看详情</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                <div class="card-body">
+                                    <div class="basic-elements">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <form method="post" action="/document/insertDocument">
+                                                    <div class="form-group">
+                                                        <label>文档名称</label>
+                                                        <input type="text" class="form-control" th:text="${document.documentName}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>文档类别</label>
+                                                        <select class="form-control" name="classId">
+                                                            <option th:value="${document.classId}" th:text="${document.className}"></option>
+                                                            <div th:each="classes: ${classResult}">
+                                                                <option th:each="child: ${classes.childClass}" th:text="${child.className}" th:value="${child.classId}"></option>
+                                                            </div>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>文档内容</label>
+                                                        <textarea class="form-control" rows="3" th:text="${document.doucument}"></textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>上传者</label>
+                                                        <input class="form-control" type="text" th:value="${document.userName}" readonly>
+                                                        <a th:href="${url}">预览附件信息</a>
+                                                        <a id="print" href="#">打印文档信息</a>
+                                                    </div>
+                                                        <button type="submit" class="btn btn-default">修改提交</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+
+                                    </div>
                                 </div>
                             </div>
                         </div><!-- /# column -->
-
+                        <!-- /# column -->
 					</div><!-- /# row -->     </div>
-     <!-- /# main content -->
+     <!-- /# main content -->More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
             </div><!-- /# container-fluid -->
         </div><!-- /# main -->
     </div><!-- /# content wrap -->
