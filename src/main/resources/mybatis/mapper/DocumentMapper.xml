@@ -295,6 +295,7 @@
   <select id="selectByLikeDocumentName" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
     select document.*, user.user_name from document, user
     where document_name like #{document_name}
+    or doucument like #{documentName}
     and document.user_id = user.user_id
     order by document.update_time desc
   </select>
