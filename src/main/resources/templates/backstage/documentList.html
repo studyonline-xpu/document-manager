@@ -24,7 +24,7 @@
             </div>
             <div class="search">
                 <form action="/document/queryByDocumentName" name="form">
-                <span>文档名称：</span>
+                <span>文档名称或内容：</span>
                 <input type="text" placeholder="请输入文档的名称或内容" name="documentName"/>
 
                 <input type="button" value="查询" style="cursor: pointer" onclick="document.form.submit()"/>
@@ -49,7 +49,7 @@
                     <td><a th:href="${document.documentUrl}">预览附件</a></td>
                     <td th:text="${document.updateTime}"></td>
                     <td>
-                        <a th:href="@{'/viewOneDocument?documentName='+${document.documentName}}"><img src="../backstage/img/read.png" alt="查看" title="查看"/></a>
+                        <a th:href="@{'/viewOneDocument?documentId='+${document.documentId}}"><img src="../backstage/img/read.png" alt="查看" title="查看"/></a>
                         <!--<a href="billUpdate.html"><img src="../backstage/img/xiugai.png" alt="修改" title="修改"/></a>-->
                         <a href="#" class="removeBill" th:id="${document.documentId}"><img src="../backstage/img/schu.png" alt="删除" title="删除"/></a>
                     </td>

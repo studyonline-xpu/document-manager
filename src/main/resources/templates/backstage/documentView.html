@@ -22,7 +22,7 @@
             <strong>你现在所在的位置是:</strong>
             <span>文档管理页面  >>  文档信息查看</span>
         </div>
-        <div class="providerView" th:each="document: ${documentList}">
+        <div class="providerView">
             <p><strong>用户名称：</strong><span th:text="${document.userName}">231</span></p>
             <p><strong>文档编号：</strong><span th:text="${document.documentId}">123</span></p>
             <p><strong>文档名称：</strong><span th:text="${document.documentName}">北极</span></p>
