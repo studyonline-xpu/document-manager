@@ -70,4 +70,11 @@ public interface DocumentService {
      * @return
      */
     boolean deleteByDocumentId(String documentId);
+
+    /**
+     * 根据文档Id查看文档
+     * @param documentId
+     * @return
+     */
+    public Document selectDocumentById(String documentId);
 }

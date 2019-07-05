@@ -111,4 +111,14 @@ public class DocumentServiceImpl implements DocumentService {
     public boolean deleteByDocumentId(String documentId) {
         return documentMapper.deleteByPrimaryKey(documentId) > 0;
     }
+
+    /**
+     * 根据文档Id查看文档
+     * @param documentId
+     * @return
+     */
+    @Override
+    public Document selectDocumentById(String documentId) {
+        return documentMapper.selectDocumentById(documentId);
+    }
 }
