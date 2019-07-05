@@ -245,7 +245,7 @@
                                                 <td><span class="badge badge-primary" th:text="${document.userName}">Sale</span></td>
                                                 <td th:text="${document.updateTime}"></td>
                                                 <td class="color-primary"><a th:href='@{${document.documentUrl}}'>点击预览附件</a></td>
-                                                <td class="color-primary"><a href="#">查看详情</a></td>
+                                                <td class="color-primary"><a th:href="@{'/document/selectDocumentById?documentId='+${document.documentId}}">查看详情</a></td>
                                             </tr>
                                         </tbody>
                                     </table>

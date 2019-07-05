@@ -161,20 +161,20 @@ public class DocumentController {
 
     /**
      * 更新文档
+     *
      * @param document 文档
      * @return 放回json提示
      */
     @RequestMapping("/updateDocument")
-    @ResponseBody
-    public String updateDocument(Document document){
+    public String updateDocument(Document document, Map map) {
         document.setUpdateTime(new Date());
-        Map result = new HashMap();
-        if(documentService.updateDocument(document)) {
-            result.put("msg", "更新成功");
-        }else {
-            result.put("msg", "更新失败");
+        if (documentService.updateDocument(document)) {
+            Document documents = documentService.selectDocumentById(document.getDocumentId());
+            map.put("document",documents);
         }
-        return JsonUtils.objectToJson(result);
+        List<Class> classes = classService.queryAllClass();
+        map.put("classResult",classes);
+        return "index/watch";
     }
 
     /**
@@ -225,7 +225,7 @@ public class DocumentController {
         Document document = documentService.selectDocumentById(documentId);
         List<Class> classList = classService.queryAllClass();
         if (document != null) {
-            result.put("classList", classList);
+            result.put("classResult", classList);
             result.put("document", document);
         }
         return "index/watch";

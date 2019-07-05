@@ -206,28 +206,30 @@
                                     <div class="basic-elements">
                                             <div class="row">
                                                 <div class="col-lg-6">
-                                                    <form method="post" action="/document/insertDocument">
+                                                    <form method="post" th:action="@{'/document/updateDocument?documentId='+${document.documentId}}">
                                                     <div class="form-group">
                                                         <label>文档名称</label>
-                                                        <input type="text" class="form-control" th:text="${document.documentName}">
+                                                        <input type="text" class="form-control" th:value="${document.documentName}" name="documentName">
                                                     </div>
                                                     <div class="form-group">
                                                         <label>文档类别</label>
                                                         <select class="form-control" name="classId">
                                                             <option th:value="${document.classId}" th:text="${document.className}"></option>
                                                             <div th:each="classes: ${classResult}">
-                                                                <option th:each="child: ${classes.childClass}" th:text="${child.className}" th:value="${child.classId}"></option>
+                                                                <option th:each="child: ${classes.childClass}" th:text="${child.className}" th:value="${child.classId}">
+                                                                </option>
                                                             </div>
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>文档内容</label>
-                                                        <textarea class="form-control" rows="3" th:text="${document.doucument}"></textarea>
+                                                        <textarea class="form-control" rows="3" th:text="${document.doucument}" name="doucument"></textarea>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>上传者</label>
                                                         <input class="form-control" type="text" th:value="${document.userName}" readonly>
-                                                        <a th:href="${url}">预览附件信息</a>
+                                                        <input class="form-control" type="hidden" th:value="${document.userId}" name="userId">
+                                                        <a th:href="${document.documentUrl}">预览附件信息</a>
                                                         <a id="print" href="#">打印文档信息</a>
                                                     </div>
                                                         <button type="submit" class="btn btn-default">修改提交</button>
@@ -241,7 +243,6 @@
                         </div><!-- /# column -->
                         <!-- /# column -->
 					</div><!-- /# row -->     </div>
-     <!-- /# main content -->More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
             </div><!-- /# container-fluid -->
         </div><!-- /# main -->
     </div><!-- /# content wrap -->
