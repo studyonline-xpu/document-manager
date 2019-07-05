@@ -37,7 +37,6 @@ public class DocumentServiceImpl implements DocumentService {
     @Override
     public List<Document> queryByLikeDocumentName(String documentName) {
         documentName = "%"+documentName+"%";
-        System.out.println(documentName);
         List<Document> documentList = documentMapper.selectByLikeDocumentName(documentName);
         return documentList;
     }
