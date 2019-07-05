@@ -215,4 +215,21 @@ public class DocumentController {
         map.put("documents", documents);
         return "backstage/documentList";
     }
+
+    /**
+     * 根据文档Id查看文档以及子类
+     * @param documentId
+     * @param result
+     * @return
+     */
+    @RequestMapping("/selectDocumentById")
+    public String selectDocumentById(String documentId, Map result) {
+        Document document = documentService.selectDocumentById(documentId);
+        List<Class> classList = classService.queryAllClass();
+        if (document != null) {
+            result.put("classList", classList);
+            result.put("document", document);
+        }
+        return "index/watch";
+    }
 }

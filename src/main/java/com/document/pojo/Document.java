@@ -21,6 +21,16 @@ public class Document implements Serializable {
     //添加属性
     private String userName;
 
+    private String className;
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
     public String getUserName() {
         return userName;
     }
