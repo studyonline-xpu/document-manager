@@ -109,9 +109,9 @@ public class pageController {
     DocumentService documentService;
 
     @RequestMapping("/viewOneDocument")
-    public String goDocumentView(Document document, Map result) {
-        List<Document> documentList = documentService.queryByLikeDocumentName(document.getDocumentName());
-        result.put("documentList", documentList);
+    public String goDocumentView(Document document1, Map result) {
+        Document document = documentService.selectDocumentById(document1.getDocumentId());
+        result.put("document", document);
         return "backstage/documentView";
     }
 }
