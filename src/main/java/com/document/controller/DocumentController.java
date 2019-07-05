@@ -146,17 +146,16 @@ public class DocumentController {
      * @return 返回json 提示
      */
     @RequestMapping("/insertDocument")
-    @ResponseBody
-    public String insertDocument(Document document){
+    public String insertDocument(Document document,Map map){
         document.setDocumentId(IdUtil.next());
         document.setUpdateTime(new Date());
-        Map result = new HashMap();
+        List<Class> classes = classService.queryAllClass();
         if(documentService.addDocument(document)) {
-            result.put("msg", "上传成功");
+
         }else {
-            result.put("msg", "上传失败");
         }
-        return JsonUtils.objectToJson(result);
+        map.put("classResult", classes);
+        return "index/form-basic";
     }
 
     /**
