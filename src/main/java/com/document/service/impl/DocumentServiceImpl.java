@@ -37,7 +37,6 @@ public class DocumentServiceImpl implements DocumentService {
     @Override
     public List<Document> queryByLikeDocumentName(String documentName) {
         documentName = "%"+documentName+"%";
-        System.out.println(documentName);
         List<Document> documentList = documentMapper.selectByLikeDocumentName(documentName);
         return documentList;
     }
@@ -111,5 +110,15 @@ public class DocumentServiceImpl implements DocumentService {
     @Override
     public boolean deleteByDocumentId(String documentId) {
         return documentMapper.deleteByPrimaryKey(documentId) > 0;
+    }
+
+    /**
+     * 根据文档Id查看文档
+     * @param documentId
+     * @return
+     */
+    @Override
+    public Document selectDocumentById(String documentId) {
+        return documentMapper.selectDocumentById(documentId);
     }
 }

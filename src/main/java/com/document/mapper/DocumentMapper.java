@@ -74,4 +74,11 @@ public interface DocumentMapper {
      * @return
      */
     List<Document> selectAllDocument();
+
+    /**
+     * 根据文档Id查看文档
+     * @param documentId
+     * @return
+     */
+    Document selectDocumentById(String documentId);
 }

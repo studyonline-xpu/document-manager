@@ -23,9 +23,9 @@
             <span>文档类别管理页面</span>
         </div>
         <div class="search">
-            <span>类别名称：</span>
-            <input type="text" placeholder="请输入供应商的名称"/>
-            <input type="button" value="查询"/>
+<!--            <span>类别名称：</span>-->
+<!--            <input type="text" placeholder="请输入供应商的名称"/>-->
+<!--            <input type="button" value="查询"/>-->
             <a href="providerAdd">添加文档类别</a>
         </div>
         <!--供应商操作表格-->
@@ -42,8 +42,8 @@
                     <td th:text="${class.className}">测试供应商001</td>
                     <td th:text="${class.fatherId}">韩露</td>
                     <td>
-                        <a href="providerView.html"><img src="../backstage/img/read.png" alt="查看" title="查看"/></a>
-                        <a href="providerUpdate.html"><img src="../backstage/img/xiugai.png" alt="修改" title="修改"/></a>
+<!--                        <a href="providerView.html"><img src="../backstage/img/read.png" alt="查看" title="查看"/></a>-->
+<!--                        <a href="providerUpdate.html"><img src="../backstage/img/xiugai.png" alt="修改" title="修改"/></a>-->
                     </td>
                 </tr>
                 <tr th:each="classChild: ${class.childClass}">
@@ -51,7 +51,7 @@
                     <td th:text="${classChild.className}">测试供应商001</td>
                     <td th:text="${classChild.fatherId}">韩露</td>
                     <td>
-                        <a href="providerView.html"><img src="../backstage/img/read.png" alt="查看" title="查看"/></a>
+<!--                        <a href="providerView.html"><img src="../backstage/img/read.png" alt="查看" title="查看"/></a>-->
                         <a th:href="@{'/updateClassId?classId='+${classChild.classId}+'&className='+${classChild.className}+'&fatherId='+${classChild.fatherId}}"><img src="../backstage/img/xiugai.png" alt="修改" title="修改"/></a>
                         <a href="#" class="removeProvider" th:id="${classChild.classId}"><img src="../backstage/img/schu.png" alt="删除" title="删除"/></a>
                     </td>

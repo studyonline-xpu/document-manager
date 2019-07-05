@@ -8,6 +8,7 @@
     <result column="class_id" jdbcType="VARCHAR" property="classId" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
 <!--    自己添加的属性进行映射-->
+    <result column="class_name" jdbcType="VARCHAR" property="className"/>
     <result column="user_name" jdbcType="VARCHAR" property="userName"/>
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.document.pojo.Document">
@@ -295,6 +296,7 @@
   <select id="selectByLikeDocumentName" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
     select document.*, user.user_name from document, user
     where document_name like #{document_name}
+    or doucument like #{documentName}
     and document.user_id = user.user_id
     order by document.update_time desc
   </select>
@@ -328,6 +330,15 @@
     select document.*, user.user_name
     from document, user
     where document.user_id = user.user_id
+    order by document.update_time desc
+  </select>
+  <!--根据文档Id查看文档-->
+  <select id="selectDocumentById" resultMap="ResultMapWithBLOBs">
+    select document.*, user.user_name,class.class_name
+    from document, user, class
+    where document.user_id = user.user_id
+    and document.document_id = #{documentId}
+    and document.class_id = class.class_id
     order by document.update_time desc
   </select>
 </mapper>
