@@ -116,8 +116,7 @@ public class DocumentController {
     @Value("101.132.78.78")
     String IMAGE_SERVER_URL;
     @RequestMapping("/upload")
-    @ResponseBody
-    public String upLoadFile(MultipartFile uploadFile){
+    public String upLoadFile(MultipartFile uploadFile,Map map){
         try{
             //创建fastDFS的客户端
             FastDFSClient fastDFSClient = new FastDFSClient("D:/编程相关/ItellWorksapce/document/src/main/resources/conf/client.conf");
@@ -129,17 +128,16 @@ public class DocumentController {
             //补充url
             url = IMAGE_SERVER_URL + "/" + url;
             //封装到对象里
-            Map result = new HashMap();
-            result.put("error", 0);
-            result.put("url", url);
-            return JsonUtils.objectToJson(result);
+            map.put("error", 0);
+            map.put("url", "http://"+url);
         }catch (Exception e){
             e.printStackTrace();
-            Map result = new HashMap();
-            result.put("error", 1);
-            result.put("url", "图片上传失败");
-            return JsonUtils.objectToJson(result);
+            map.put("error", 1);
+            map.put("url", "图片上传失败");
         }
+        List<Class> classes = classService.queryAllClass();
+        map.put("classResult",classes);
+        return "index/form-basic";
     }
 
     /**

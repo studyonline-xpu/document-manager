@@ -93,7 +93,7 @@
                             <li class="user-tooltip" data-id="1" data-status="online" data-username="Rufat Askerov" data-position="left" data-filter-item data-filter-name="rufat askerov">
                                 <!-- BEGIN USER IMAGE-->
                                 <div class="user-image">
-                                    <img src="../index//images/avatar/1.jpg" class="avatar" alt="Rufat Askerov" />
+                                    <img src="../index/images/avatar/1.jpg" class="avatar" alt="Rufat Askerov" />
                                 </div>
                                 <!-- END USER IMAGE-->
                                 <!-- BEGIN USERNAME-->
@@ -171,7 +171,7 @@
                     <div class="col-lg-8 p-0">
                         <div class="page-header">
                             <div class="page-title">
-                                <h1>Dashboard 1</h1>
+                                <h1>企业文档管理系统</h1>
                             </div>
                         </div>
                     </div>
@@ -179,7 +179,7 @@
                         <div class="page-header">
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
-                                    <li><a href="#">Dashboard</a></li>
+                                    <li><a href="#">上传文档</a></li>
                                     <li class="active">Basic Form</li>
                                 </ol>
                             </div>
@@ -206,28 +206,30 @@
                                     <div class="basic-elements">
                                             <div class="row">
                                                 <div class="col-lg-6">
-                                                    <form>
+                                                    <form method="post" action="/document/insertDocument">
                                                     <div class="form-group">
                                                         <label>文档名称</label>
-                                                        <input type="text" class="form-control" value="Some text value...">
+                                                        <input type="text" class="form-control" placeholder="Some text value..." name="documentName">
                                                     </div>
                                                     <div class="form-group">
                                                         <label>文档类别</label>
-                                                        <select class="form-control">
+                                                        <select class="form-control" name="classId">
                                                             <div th:each="classes: ${classResult}">
-                                                                <option th:each="child: ${classes.childClass}" th:text="${child.className}">1</option>
+                                                                <option th:each="child: ${classes.childClass}" th:text="${child.className}" th:value="${child.classId}">1</option>
                                                             </div>
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>文档内容</label>
-                                                        <textarea class="form-control" rows="3" placeholder="Text input"></textarea>
+                                                        <textarea class="form-control" rows="3" placeholder="Text input" name="doucument"></textarea>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>上传者</label>
                                                         <input class="form-control" type="text" th:value="${session.user.userName}" readonly>
-                                                        <input type="hidden" class="form-control">
+                                                        <input type="hidden" th:value="${session.user.userId}" name="userId">
+                                                        <input th:if="${!#strings.isEmpty(url)}" th:value="${url}" type="hidden" class="form-control" name="documentUrl">
                                                     </div>
+                                                        <button type="submit" class="btn btn-default">提交</button>
                                                     </form>
                                                 </div>
                                                 <div class="col-lg-6">
@@ -235,6 +237,7 @@
                                                         <div class="form-group">
                                                             <label>上传附件</label>
                                                             <input name="uploadFile" id="file" class="form-control" type="file" accept=".pdf" multiple>
+                                                            <span th:if="${!#strings.isEmpty(url)}" style="color: red;">上传成功,请重新输入文档信息!</span>
                                                         </div>
                                                     </form>
                                                 </div>
